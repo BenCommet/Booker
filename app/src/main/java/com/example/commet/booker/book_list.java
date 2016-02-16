@@ -22,6 +22,7 @@ public class book_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
+
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
