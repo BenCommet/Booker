@@ -18,6 +18,10 @@ public class book_list extends AppCompatActivity {
     private bookListAdapter bList;
     private ListView listView;
 
+    public bookListAdapter getList() {
+        return bList;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
