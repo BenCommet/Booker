@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "You do not need to signup in this version.",
-                        Toast.LENGTH_SHORT).show();
+                signup(v);
             }
         });
 
@@ -54,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Invalid login credentials! Valid email required.",
                     Toast.LENGTH_SHORT).show();
         }
+    }
+    public void signup(View view){
+            Intent intent = new Intent(this, SignupActivity.class);
+            startActivity(intent);
     }
 
     public boolean checkUsername(String s) {

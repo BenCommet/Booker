@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.matchers.*;
 import org.junit.runner.RunWith;
 
+import static android.app.PendingIntent.getActivity;
 import static android.support.test.InstrumentationRegistry.getTargetContext;
 import static android.support.test.espresso.Espresso.*;
 import static android.support.test.espresso.action.ViewActions.clearText;
@@ -22,6 +23,7 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
 import static android.support.test.espresso.matcher.ViewMatchers.*;
 //import static java.util.regex.Pattern.matches;
 
@@ -49,12 +51,13 @@ public class ApplicationTest {
         intended(hasComponent(new ComponentName(getTargetContext(), book_list.class)));
     }
 
-//    @Test
-//    public void testButtonClickSignUp() {
+    @Test
+    public void testButtonClickSignUp() {
 //        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
 //        onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
-//        onView(withText("Barter Books")).perform(closeSoftKeyboard());
-//        onView(withText("Signup")).perform(click());
-//        onView(withText("Barter Books")).check(matches(withText("You do not need to signup in this version.")));
-//    }
+        onView(withText("Barter Books")).perform(closeSoftKeyboard());
+        onView(withText("Signup")).perform(click());
+        intended(hasComponent(new ComponentName(getTargetContext(), SignupActivity.class)));
+
+    }
 }
