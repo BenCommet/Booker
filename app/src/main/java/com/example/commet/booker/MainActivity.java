@@ -56,14 +56,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private boolean checkUsername(String s) {
+    public boolean checkUsername(String s) {
         if (s.contains(String.valueOf('@')) == false) {
             return false;
         }
         return true;
     }
 
-    private boolean checkPassword(String s) {
+    public boolean checkPassword(String s) {
         if (s.length() < 8) {
             return false;
         }
