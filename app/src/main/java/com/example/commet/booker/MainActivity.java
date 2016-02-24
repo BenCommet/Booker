@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else {
-            Toast.makeText(getApplicationContext(), "Invalid login credentials! Valid email required.",
+            Toast.makeText(getApplicationContext(), "Invalid login credentials! Valid email/password" +
+                            " required.",
                     Toast.LENGTH_SHORT).show();
         }
     }
@@ -63,16 +64,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean checkUsername(String s) {
-        if (s.contains(String.valueOf('@')) == false) {
-            return false;
-        }
-        return true;
+        return s.contains(String.valueOf('@')) != false;
     }
 
     public boolean checkPassword(String s) {
-        if (s.length() < 8) {
-            return false;
-        }
-        return true;
+        return s.length() >= 8;
     }
 }

@@ -7,7 +7,7 @@ import org.junit.Test;
 import android.content.Context;
 import android.util.Log;
 
-import java_cup.Main;
+//import java_cup.Main;
 
 import static org.junit.Assert.*;
 

@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-
 /**
 * Sign up activity. Displays text fields for user info and signup button.
 * Currently does not implement full functionality. Toasts are used to display this
@@ -39,7 +37,7 @@ public class SignupActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Will link to Email app on next release", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -56,7 +54,10 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void signup(View view){
-        Intent intent = new Intent(this, SignupActivity.class);
-        startActivity(intent);
+//      Intent intent = new Intent(this, SignupActivity.class);
+//      startActivity(intent);
+        Toast.makeText(getApplicationContext(), "This feature has not been implemented yet. " +
+                            "Thank you for your patience.",
+                Toast.LENGTH_SHORT).show();
     }
 }
