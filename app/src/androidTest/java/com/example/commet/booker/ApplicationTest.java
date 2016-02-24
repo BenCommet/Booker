@@ -28,7 +28,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.*;
 //import static java.util.regex.Pattern.matches;
 
 /**
- * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
+ * Created by Jesse and Michael
+ * Class to implement basic system testing of the various activities and actions in the
+ * application.
  */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -37,11 +39,19 @@ public class ApplicationTest {
     @Rule
     public IntentsTestRule<MainActivity> mActivityRule = new IntentsTestRule(MainActivity.class);
 
+    /*
+    * Test for the load of MainActivity. Checks that text in MainActivity is correctly
+    * displayed, indicating that the activity has loaded correctly.
+    */
     @Test
     public void testForCorrectTitle() {
         onView(withText("Barter Books")).check(matches(withText("Barter Books")));
     }
 
+    /*
+    * Test of login button in main activity. Tests to see if book_list activity is
+    * loaded on login button click. Sets up text fields with valid data.
+    */
     @Test
     public void testButtonClickLogin() {
         onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
@@ -51,6 +61,10 @@ public class ApplicationTest {
         intended(hasComponent(new ComponentName(getTargetContext(), book_list.class)));
     }
 
+    /*
+    * Test of Signup button in main activity. Tests to see if SignupActivity is
+    * loaded on Signup button click.
+    */
     @Test
     public void testButtonClickSignUp() {
 //        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));

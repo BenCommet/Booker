@@ -11,6 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
+/**
+* Sign up activity. Displays text fields for user info and signup button.
+* Currently does not implement full functionality. Toasts are used to display this
+* activity is still in development.
+*
+*/
 public class SignupActivity extends AppCompatActivity {
 
     private EditText username_text;
