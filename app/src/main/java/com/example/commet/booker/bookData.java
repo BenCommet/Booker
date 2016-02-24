@@ -2,7 +2,11 @@ package com.example.commet.booker;
 
 import com.parse.ParseObject;
 import com.parse.ParseClassName;
-
+/*
+*This class is used to grab data off of parse in addition to checking if an action is complete
+*The getEmail() method pulls in the Email address stored in the database, with the getAuthor() pulling
+* in the author. Finally our get ISBN pulls in the ISBN number.
+*/
 @ParseClassName("bookData")
 public class bookData extends ParseObject{
     public bookData() {}

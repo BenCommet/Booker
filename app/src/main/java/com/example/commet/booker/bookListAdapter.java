@@ -11,7 +11,8 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Created by Commet on 2/16/2016.
+ * This is the class that actually calls our parse querying methods and then puts the data
+ * we get into the a textview, that is then added to the listview.
  */
 public class bookListAdapter extends ArrayAdapter<bookData> {
     private Context currentContext;
@@ -30,6 +31,7 @@ public class bookListAdapter extends ArrayAdapter<bookData> {
             LayoutInflater layoutInflater = LayoutInflater.from(currentContext);
             convertView = layoutInflater.inflate(R.layout.book_list_item, null);
         }
+
 
         bookData currentBookData = listViewData.get(position);
         TextView currentTextView = (TextView) convertView.findViewById(R.id.book_description);

@@ -13,7 +13,9 @@ import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+* This class creates a listview that holds the ISBN"s of our database's books.
+*/
 public class book_list extends AppCompatActivity {
     private bookListAdapter bList;
     private ListView listView;
@@ -22,11 +24,14 @@ public class book_list extends AppCompatActivity {
         return bList;
     }
 
+    //This method, like its counterpart in main, creates
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
 
+        //This connects us to parse. Without the error checking the app will force close
+        //If this activity is opened again.
         try {
             Parse.enableLocalDatastore(this);
             Parse.initialize(this);
@@ -42,6 +47,7 @@ public class book_list extends AppCompatActivity {
         updateData();
     }
 
+    //This is the method that actually fills in our data
     public void updateData(){
         ParseQuery<bookData> query = ParseQuery.getQuery(bookData.class);
         query.findInBackground(new FindCallback<bookData>() {
