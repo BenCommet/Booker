@@ -20,7 +20,9 @@
         android:layout_above="@+id/password"
         android:layout_alignLeft="@+id/password"
         android:layout_alignStart="@+id/password"
+        android:hint="email"
         android:layout_marginBottom="39dp" />
+
 
     <EditText
         android:layout_width="wrap_content"
@@ -29,6 +31,7 @@
         android:ems="10"
         android:id="@+id/password"
         android:layout_centerVertical="true"
+        android:hint="password"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -36,7 +39,6 @@
         android:layout_height="wrap_content"
         android:text="Signup"
         android:id="@+id/signup_button"
-        android:layout_below="@+id/login_button"
-        android:layout_alignLeft="@+id/login_button"
-        android:layout_alignStart="@+id/login_button" />
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

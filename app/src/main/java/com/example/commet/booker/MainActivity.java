@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+* MainActivity: Login Screen and text fields. Includes helper functions to error check text input.
+* */
 public class MainActivity extends AppCompatActivity {
 
     private EditText username_text;

@@ -20,6 +20,7 @@
         android:layout_above="@+id/password"
         android:layout_alignLeft="@+id/password"
         android:layout_alignStart="@+id/password"
+        android:hint="email"
         android:layout_marginBottom="39dp" />
 
     <EditText
@@ -29,6 +30,7 @@
         android:ems="10"
         android:id="@+id/password"
         android:layout_centerVertical="true"
+        android:hint="password"
         android:layout_centerHorizontal="true" />
 
     <Button

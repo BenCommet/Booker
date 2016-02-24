@@ -13,7 +13,7 @@ import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
-/*
+/**
 * This class creates a listview that holds the ISBN"s of our database's books.
 */
 public class book_list extends AppCompatActivity {
