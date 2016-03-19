@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         drawerList = (ListView) findViewById(R.id.left_drawer);
         drawerList.setAdapter(new ArrayAdapter<String>(MainActivity.this, R.layout.nav_drawer_item, navDrawerArray));
 
+        drawerList.setOnItemClickListener(new DrawerItemClickListener());
+
         final Button login_button = (Button) findViewById(R.id.login_button);
         final Button signup_button = (Button) findViewById(R.id.signup_button);
         username_text = (EditText)findViewById(R.id.username);
@@ -55,6 +58,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            switch(position){
+                case 0: Toast.makeText(MainActivity.this, "You are already on the home page.", Toast.LENGTH_LONG);
+                    break;
+                case 1: Intent signupIntent = new Intent(MainActivity.this, SignupActivity.class);
+                    startActivity(signupIntent);
+                    break;
+                case 2: Intent bookListIntent = new Intent(MainActivity.this, book_list.class);
+                    startActivity(bookListIntent);
+                    break;
+            }
+        }
     }
 
     public void login(View view, String user, String pass){
