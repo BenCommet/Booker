@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Barter Books</string>
     <string name="title_activity_signup">SignupActivity</string>
+    <string-array name="nav_drawer_array">
+        <item name ="home">Home</item>
+        <item name = "Signup">Signup</item>
+        <item name = "Books">Books</item>
+    </string-array>
 </resources>
