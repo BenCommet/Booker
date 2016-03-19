@@ -7,4 +7,5 @@
     android:layout_weight="1"
     android:textColor="#111"
     android:textSize="32sp"
-    android:textAppearance="?android:attr/textAppearanceMedium" />
+    android:textAppearance="?android:attr/textAppearanceMedium" >
+</TextView>
