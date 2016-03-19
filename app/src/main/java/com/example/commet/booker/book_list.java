@@ -39,7 +39,7 @@ public class book_list extends AppCompatActivity {
         setContentView(R.layout.activity_book_list);
 
         Resources res = getResources();
-
+        //instantiating drawer items
         navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
         drawerList = (ListView) findViewById(R.id.left_drawer);
         drawerList.setAdapter(new ArrayAdapter<String>(book_list.this, R.layout.nav_drawer_item, navDrawerArray));
