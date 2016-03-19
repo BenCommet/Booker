@@ -1,11 +1,14 @@
 package com.example.commet.booker;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 /**
@@ -15,11 +18,18 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText username_text;
     private EditText pass_text;
+    private ListView drawerList;
+    private String [] navDrawerArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Resources res = getResources();
+
+        navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
+        drawerList = (ListView) findViewById(R.id.left_drawer);
+        drawerList.setAdapter(new ArrayAdapter<String>(MainActivity.this, R.layout.nav_drawer_item, navDrawerArray));
 
         final Button login_button = (Button) findViewById(R.id.login_button);
         final Button signup_button = (Button) findViewById(R.id.signup_button);
