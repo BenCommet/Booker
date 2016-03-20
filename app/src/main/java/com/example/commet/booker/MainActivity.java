@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 case 1: Intent signupIntent = new Intent(MainActivity.this, SignupActivity.class);
                     startActivity(signupIntent);
                     break;
-                case 2: Intent bookListIntent = new Intent(MainActivity.this, book_list.class);
+                case 2: Intent bookListIntent = new Intent(MainActivity.this, BookList.class);
                     startActivity(bookListIntent);
                     break;
             }
@@ -78,8 +78,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void login(View view, String user, String pass){
         if (checkUsername(user) && checkPassword(pass)) {
-            Intent intent = new Intent(this, book_list.class);
+            Intent intent = new Intent(this, BookList.class);
             startActivity(intent);
+
+//            Intent intent = new Intent(this, LoginActivity.class);
+//            startActivity(intent);
         }
         else {
             Toast.makeText(getApplicationContext(), "Invalid login credentials! Valid email/password" +
@@ -87,6 +90,19 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
     }
+
+//    public void login(View view, String user, String pass){
+//        if (checkUsername(user) && checkPassword(pass)) {
+//            Intent intent = new Intent(this, BookList.class);
+//            startActivity(intent);
+//        }
+//        else {
+//            Toast.makeText(getApplicationContext(), "Invalid login credentials! Valid email/password" +
+//                            " required.",
+//                    Toast.LENGTH_SHORT).show();
+//        }
+//    }
+
     public void signup(View view){
             Intent intent = new Intent(this, SignupActivity.class);
             startActivity(intent);

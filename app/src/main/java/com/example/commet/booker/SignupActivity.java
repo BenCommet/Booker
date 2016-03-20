@@ -3,10 +3,7 @@ package com.example.commet.booker;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -71,7 +68,7 @@ public class SignupActivity extends AppCompatActivity {
                     break;
                 case 1: Toast.makeText(SignupActivity.this, "You are already on the signiup page", Toast.LENGTH_LONG);
                     break;
-                case 2: Intent bookListIntent = new Intent(SignupActivity.this, book_list.class);
+                case 2: Intent bookListIntent = new Intent(SignupActivity.this, BookList.class);
                     startActivity(bookListIntent);
                     break;
             }

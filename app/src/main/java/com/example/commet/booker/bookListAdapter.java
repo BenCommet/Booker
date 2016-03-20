@@ -14,12 +14,12 @@ import java.util.List;
  * This is the class that actually calls our parse querying methods and then puts the data
  * we get into the a textview, that is then added to the listview.
  */
-public class bookListAdapter extends ArrayAdapter<bookData> {
+public class BookListAdapter extends ArrayAdapter<BookData> {
     private Context currentContext;
     //This list holds the items in the listview
-    private List<bookData> listViewData;
+    private List<BookData> listViewData;
 
-    public bookListAdapter(Context context, List<bookData> objects){
+    public BookListAdapter(Context context, List<BookData> objects){
         super(context, R.layout.book_list_item, objects);
         this.currentContext = context;
         this.listViewData = objects;
@@ -33,7 +33,7 @@ public class bookListAdapter extends ArrayAdapter<bookData> {
         }
 
 
-        bookData currentBookData = listViewData.get(position);
+        BookData currentBookData = listViewData.get(position);
         TextView currentTextView = (TextView) convertView.findViewById(R.id.book_description);
         currentTextView.setText(currentBookData.getISBN());
         if(currentBookData.isCompleted()){

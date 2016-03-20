@@ -1,11 +1,7 @@
 package com.example.commet.booker;
 
-import android.content.Context;
-
 import org.junit.Before;
 import org.junit.Test;
-import android.content.Context;
-import android.util.Log;
 
 //import java_cup.Main;
 
@@ -17,9 +13,9 @@ import static org.junit.Assert.*;
  * method calls.
  */
 public class MainUnitTest {
-    private book_list list;
-    private bookListAdapter adapt;
-    private bookData data;
+    private BookList list;
+    private BookListAdapter adapt;
+    private BookData data;
     MainActivity act;
 
     /**
@@ -28,12 +24,12 @@ public class MainUnitTest {
     @Before
     public void setup() {
         act = new MainActivity();
-        list = new book_list();
+        list = new BookList();
         list.updateData();
     }
 
     /**
-    * Test to see if book_list is instantiated correctly.
+    * Test to see if BookList is instantiated correctly.
     */
     @Test
     public void bookListTest() throws Exception

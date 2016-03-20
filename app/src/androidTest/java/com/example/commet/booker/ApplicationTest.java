@@ -1,16 +1,11 @@
 package com.example.commet.booker;
-import android.app.Application;
 import android.content.ComponentName;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
-import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.test.ApplicationTestCase;
 import android.test.suitebuilder.annotation.LargeTest;
 
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.matchers.*;
 import org.junit.runner.RunWith;
 
 import static android.app.PendingIntent.getActivity;
@@ -23,7 +18,6 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
-import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
 import static android.support.test.espresso.matcher.ViewMatchers.*;
 //import static java.util.regex.Pattern.matches;
 
@@ -49,7 +43,7 @@ public class ApplicationTest {
     }
 
     /*
-    * Test of login button in main activity. Tests to see if book_list activity is
+    * Test of login button in main activity. Tests to see if BookList activity is
     * loaded on login button click. Sets up text fields with valid data.
     */
     @Test
@@ -58,7 +52,7 @@ public class ApplicationTest {
         onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
         onView(withText("Barter Books")).perform(closeSoftKeyboard());
         onView(withText("Login")).perform(click());
-        intended(hasComponent(new ComponentName(getTargetContext(), book_list.class)));
+        intended(hasComponent(new ComponentName(getTargetContext(), BookList.class)));
     }
 
     /*

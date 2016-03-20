@@ -7,9 +7,9 @@ import com.parse.ParseClassName;
 *The getEmail() method pulls in the Email address stored in the database, with the getAuthor() pulling
 * in the author. Finally our get ISBN pulls in the ISBN number.
 */
-@ParseClassName("bookData")
-public class bookData extends ParseObject{
-    public bookData() {}
+@ParseClassName("BookData")
+public class BookData extends ParseObject{
+    public BookData() {}
 
     public boolean isCompleted() {return getBoolean("completed");}
 

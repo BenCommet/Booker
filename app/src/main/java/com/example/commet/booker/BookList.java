@@ -22,13 +22,13 @@ import java.util.List;
 /**
 * This class creates a listview that holds the ISBN"s of our database's books.
 */
-public class book_list extends AppCompatActivity {
-    private bookListAdapter bList;
+public class BookList extends AppCompatActivity {
+    private BookListAdapter bList;
     private ListView listView;
     private ListView drawerList;
     private String [] navDrawerArray;
 
-    public bookListAdapter getList() {
+    public BookListAdapter getList() {
         return bList;
     }
 
@@ -42,7 +42,7 @@ public class book_list extends AppCompatActivity {
         //instantiating drawer items
         navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
         drawerList = (ListView) findViewById(R.id.left_drawer);
-        drawerList.setAdapter(new ArrayAdapter<String>(book_list.this, R.layout.nav_drawer_item, navDrawerArray));
+        drawerList.setAdapter(new ArrayAdapter<String>(BookList.this, R.layout.nav_drawer_item, navDrawerArray));
 
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -56,9 +56,9 @@ public class book_list extends AppCompatActivity {
             e.printStackTrace();
         }
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
-        ParseObject.registerSubclass(bookData.class);
+        ParseObject.registerSubclass(BookData.class);
 
-        bList = new bookListAdapter(this, new ArrayList<bookData>());
+        bList = new BookListAdapter(this, new ArrayList<BookData>());
         listView = (ListView) findViewById(R.id.book_list);
         listView.setAdapter(bList);
         updateData();
@@ -68,13 +68,13 @@ public class book_list extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             switch(position){
-                case 0: Intent mainIntent = new Intent(book_list.this, MainActivity.class);
+                case 0: Intent mainIntent = new Intent(BookList.this, MainActivity.class);
                     startActivity(mainIntent);
                     break;
-                case 1: Intent signupIntent = new Intent(book_list.this, SignupActivity.class);
+                case 1: Intent signupIntent = new Intent(BookList.this, SignupActivity.class);
                     startActivity(signupIntent);
                     break;
-                case 2: Toast.makeText(book_list.this, "You are looking at your books.", Toast.LENGTH_LONG);
+                case 2: Toast.makeText(BookList.this, "You are looking at your books.", Toast.LENGTH_LONG);
                     break;
             }
         }
@@ -82,10 +82,10 @@ public class book_list extends AppCompatActivity {
 
     //This is the method that actually fills in our data
     public void updateData(){
-        ParseQuery<bookData> query = ParseQuery.getQuery(bookData.class);
-        query.findInBackground(new FindCallback<bookData>() {
+        ParseQuery<BookData> query = ParseQuery.getQuery(BookData.class);
+        query.findInBackground(new FindCallback<BookData>() {
             @Override
-            public void done(List<bookData> objects, ParseException e) {
+            public void done(List<BookData> objects, ParseException e) {
                 if(objects != null) {
                     bList.clear();
                     bList.addAll(objects);
