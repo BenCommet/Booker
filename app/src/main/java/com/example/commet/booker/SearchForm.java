@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import android.util.Log;
 import org.json.JSONObject;
 
 public class SearchForm extends AppCompatActivity {
@@ -21,19 +22,20 @@ public class SearchForm extends AppCompatActivity {
         setContentView(R.layout.activity_search_form);
 
         final EditText isbn = (EditText) findViewById(R.id.isbnSearch);
+
 //        isbn.setText("9781118102282");
+//        isbn.setText("9781118983843");
+
         final Button searchBtn = (Button) findViewById(R.id.startSearch);
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
-            final String isbnData = isbn.getText().toString();
             @Override
             public void onClick(View v) {
+                String isbnData = isbn.getText().toString();
                 search(isbnData);
             }
         });
-
     }
-
 
     private void search(String isbnData) {
         if (android.os.Build.VERSION.SDK_INT > 9) {
@@ -43,6 +45,7 @@ public class SearchForm extends AppCompatActivity {
 
         JSONObject j = gq.doInBackground(isbnData);
         String items = "";
+
         try {
             items = j.getJSONArray("items").getJSONObject(0).getJSONObject("volumeInfo").getString("title");
             Log.d("Create Items", items);

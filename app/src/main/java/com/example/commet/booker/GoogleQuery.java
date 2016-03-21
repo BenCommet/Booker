@@ -26,6 +26,7 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> {
 //        JSONArray book = new JSONArray();
         JSONObject book = null;
         HttpURLConnection urlConnection = null;
+        Log.d("MainUrl", bookURLs[0]);
         String searchUrl = "https://www.googleapis.com/books/v1/volumes?"+
                 "q=isbn:" + bookURLs[0] + "&key=AIzaSyAvugTGEcCdKhLAeWnpUgAMcOoV5HuuwUU";
 
