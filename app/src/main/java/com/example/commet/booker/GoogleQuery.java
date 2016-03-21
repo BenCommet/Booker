@@ -12,6 +12,7 @@ import android.accounts.NetworkErrorException;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -22,14 +23,16 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> {
     @Override
     protected JSONObject doInBackground(String... bookURLs) {
         URL url;
-        JSONObject book = new JSONObject();
+//        JSONArray book = new JSONArray();
+        JSONObject book = null;
         HttpURLConnection urlConnection = null;
         String searchUrl = "https://www.googleapis.com/books/v1/volumes?"+
                 "q=isbn:" + bookURLs[0] + "&key=AIzaSyAvugTGEcCdKhLAeWnpUgAMcOoV5HuuwUU";
+
+//        String searchUrl = "https://www.googleapis.com/books/v1/volumes?q=isbn:9781118102282&key=AIzaSyAvugTGEcCdKhLAeWnpUgAMcOoV5HuuwUU";
         try {
             url = new URL(searchUrl);
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod("GET");
             urlConnection.setRequestMethod("GET");
             urlConnection.setReadTimeout(5000);
             urlConnection.setConnectTimeout(5000);
@@ -40,6 +43,8 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> {
             if(responseCode == HttpURLConnection.HTTP_OK) {
                 String responseStr = readStream(urlConnection.getInputStream());
                 book = new JSONObject(responseStr);
+//                JSONObject bookObj = book.getJSONObject(2);
+                Log.d("Create", book.toString());
                 return book;
             }
             else {
@@ -54,7 +59,7 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> {
             if(urlConnection != null)
                 urlConnection.disconnect();
         }
-
+//        JSONObject a = new JSONObject();
         return book;
     }
 
