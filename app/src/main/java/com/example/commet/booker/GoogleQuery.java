@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
+import android.accounts.NetworkErrorException;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -29,16 +30,21 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> {
             url = new URL(searchUrl);
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
-            urlConnection.setRequestProperty("Authorization", "Bearer");
+            urlConnection.setRequestMethod("GET");
+            urlConnection.setReadTimeout(5000);
+            urlConnection.setConnectTimeout(5000);
 
             int responseCode =  urlConnection.getResponseCode();
             String responseMessage = urlConnection.getResponseMessage();
 
             if(responseCode == HttpURLConnection.HTTP_OK) {
                 String responseStr = readStream(urlConnection.getInputStream());
-                book = new JSONObject(responseMessage);
+                book = new JSONObject(responseStr);
+                return book;
             }
-
+            else {
+                throw new NetworkErrorException();
+            }
         }
         catch ( Exception e) {
             Log.e("Error", "Error incorrect HTTP request", e);

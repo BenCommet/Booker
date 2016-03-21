@@ -36,8 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
         final Button login_button = (Button) findViewById(R.id.login_button);
         final Button signup_button = (Button) findViewById(R.id.signup_button);
+
         username_text = (EditText)findViewById(R.id.username);
+        username_text.setText("jessedroe@gmail.com");
         pass_text = (EditText)findViewById(R.id.password);
+        pass_text.setText("123456789");
 
         login_button.setOnClickListener( new View.OnClickListener() {
 
@@ -72,13 +75,16 @@ public class MainActivity extends AppCompatActivity {
                 case 2: Intent bookListIntent = new Intent(MainActivity.this, BookList.class);
                     startActivity(bookListIntent);
                     break;
+                case 3: Intent userPofileIntent = new Intent(MainActivity.this, UserProfile.class);
+                    startActivity(userPofileIntent);
+                    break;
             }
         }
     }
 
     public void login(View view, String user, String pass){
         if (checkUsername(user) && checkPassword(pass)) {
-            Intent intent = new Intent(this, BookList.class);
+            Intent intent = new Intent(this, UserProfile.class);
             startActivity(intent);
 
 //            Intent intent = new Intent(this, LoginActivity.class);

@@ -48,6 +48,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.commet.booker.MainActivity" />
         </activity>
+        <activity android:name=".QueryForm" />
+        <activity
+            android:name=".UserProfile"
+            android:label="@string/title_activity_user_profile"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.commet.booker.MainActivity" />
+        </activity>
+        <activity android:name=".SearchForm"></activity>
     </application>
 
 </manifest>
