@@ -32,7 +32,6 @@ public class BookListAdapter extends ArrayAdapter<BookData> {
             convertView = layoutInflater.inflate(R.layout.book_list_item, null);
         }
 
-
         BookData currentBookData = listViewData.get(position);
         TextView currentTextView = (TextView) convertView.findViewById(R.id.book_description);
         currentTextView.setText(currentBookData.getISBN());
