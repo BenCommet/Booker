@@ -81,7 +81,16 @@
         <activity
             android:name=".QueryListAdapter"
             android:label="@string/title_activity_list_adapter"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SingleBookAdapter"
+            android:label="@string/title_activity_single_book_adapter"
+            android:parentActivityName=".QueryForm"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.commet.booker.QueryForm" />
+        </activity>
     </application>
 
 </manifest>

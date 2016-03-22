@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 public class SearchForm extends AppCompatActivity {
     private GoogleQuery gq = new GoogleQuery();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,24 +45,30 @@ public class SearchForm extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
-        JSONObject j = gq.doInBackground(isbnData);
-        String items = "";
+        Book temp = new Book(isbnData);
 
-        try {
-            items = j.getJSONArray("items").getJSONObject(0).getJSONObject("volumeInfo").getString("title");
-            Log.d("Create Items", items);
+        TextView result =  (TextView) findViewById(R.id.resultSearch);
+        result.setText(temp.title);
 
-            TextView result =  (TextView) findViewById(R.id.resultSearch);
-            result.setText(items);
+//        JSONObject j = gq.doInBackground(isbnData);
+//        String items = "";
 
-            ParseControl t = new ParseControl();
+//        try {
+//            items = j.getJSONArray("items").getJSONObject(0).getJSONObject("volumeInfo").getString("title");
+//            Log.d("Create Items", items);
+//
+//            TextView result =  (TextView) findViewById(R.id.resultSearch);
+//            result.setText(items);
+//
+//            ParseControl t = new ParseControl();
+//
+//            t.saveToDb(items, "jessedroe@gmail.com");
+//
+//
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
-            t.saveToDb(items, "jessedroe@gmail.com");
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 //        if (j != null) {
 //            Log.d("CREATE", "Json Created");
 ////            Log.d("Create", j.toString()   );

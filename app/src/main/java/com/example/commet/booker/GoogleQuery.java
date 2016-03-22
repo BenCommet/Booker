@@ -4,11 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 import android.accounts.NetworkErrorException;
 import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -17,26 +19,26 @@ import org.json.JSONObject;
 /**
  * Created by jesse on 3/19/2016.
  */
-public class GoogleQuery extends AsyncTask<String, Void, JSONObject> {
+public class GoogleQuery extends AsyncTask<String, Void, JSONObject> implements Serializable{
 
     JSONObject book = null;
-    String isbn = "";
-    String title = "";
-    String author = "";
-    String dataPub = "";
-    String publisher = "";
-    String description = "";
 
     @Override
     protected JSONObject doInBackground(String... bookURLs) {
-        this.isbn = bookURLs[0];
+
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
 
         URL url;
         HttpURLConnection urlConnection = null;
         Log.d("MainUrl", bookURLs[0]);
         String searchUrl = "https://www.googleapis.com/books/v1/volumes?"+
-                "q=isbn:" + bookURLs[0] + "&key=AIzaSyAvugTGEcCdKhLAeWnpUgAMcOoV5HuuwUU";
+                "q=isbn:" + bookURLs[0];
 
+//                + "&key=AIzaSyAvugTGEcCdKhLAeWnpUgAMcOoV5HuuwUU";
+        Log.d("URL: ", searchUrl);
 //        String searchUrl = "https://www.googleapis.com/books/v1/volumes?q=isbn:9781118102282&key=AIzaSyAvugTGEcCdKhLAeWnpUgAMcOoV5HuuwUU";
         try {
             url = new URL(searchUrl);

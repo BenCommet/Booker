@@ -17,12 +17,11 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QueryForm extends AppCompatActivity {
-    ArrayList data = null;
-    GoogleQuery gq = new GoogleQuery();
+public class QueryForm extends AppCompatActivity implements Serializable{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,7 @@ public class QueryForm extends AppCompatActivity {
         setContentView(R.layout.activity_query_form);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         final EditText isbn = (EditText) findViewById(R.id.queryIsbn);
@@ -48,9 +47,8 @@ public class QueryForm extends AppCompatActivity {
             }
         });
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
+    }
 
 
     private void search(String isbnData) {
@@ -58,10 +56,9 @@ public class QueryForm extends AppCompatActivity {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-        Book data = new Book(isbnData);
-        Intent searchIntent = new Intent(QueryForm.this, SearchForm.class);
-        searchIntent.putExtra("data", data);
-//         intent.putExtra("some_other_key", "a value");
+//        Book data = new Book(isbnData);
+        Intent searchIntent = new Intent(QueryForm.this, SingleBookAdapter.class);
+        searchIntent.putExtra("data", isbnData);
         startActivity(searchIntent);
 
 
@@ -84,5 +81,6 @@ public class QueryForm extends AppCompatActivity {
 
 
     }
-
 }
+
+

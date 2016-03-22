@@ -26,5 +26,6 @@
         completions."
     </string>
     <string name="title_activity_list_adapter">ListAdapter</string>
+    <string name="title_activity_single_book_adapter">Book</string>
 
 </resources>
