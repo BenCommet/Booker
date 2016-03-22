@@ -79,7 +79,7 @@
                 android:value="com.example.commet.booker.UserProfile" />
         </activity>
         <activity
-            android:name=".ListAdapter"
+            android:name=".QueryListAdapter"
             android:label="@string/title_activity_list_adapter"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

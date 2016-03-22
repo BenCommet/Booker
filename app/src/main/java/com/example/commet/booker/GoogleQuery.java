@@ -19,10 +19,19 @@ import org.json.JSONObject;
  */
 public class GoogleQuery extends AsyncTask<String, Void, JSONObject> {
 
+    JSONObject book = null;
+    String isbn = "";
+    String title = "";
+    String author = "";
+    String dataPub = "";
+    String publisher = "";
+    String description = "";
+
     @Override
     protected JSONObject doInBackground(String... bookURLs) {
+        this.isbn = bookURLs[0];
+
         URL url;
-        JSONObject book = null;
         HttpURLConnection urlConnection = null;
         Log.d("MainUrl", bookURLs[0]);
         String searchUrl = "https://www.googleapis.com/books/v1/volumes?"+

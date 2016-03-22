@@ -9,8 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.commet.booker.ListAdapter"
-    tools:showIn="@layout/activity_list_adapter">
+    tools:context=".QueryListAdapter"
+    tools:showIn="@layout/activity_query_list_adapter">
 
     <ListView
         android:id="@android:id/list"
