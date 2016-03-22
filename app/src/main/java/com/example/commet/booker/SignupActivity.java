@@ -71,6 +71,12 @@ public class SignupActivity extends AppCompatActivity {
                 case 2: Intent bookListIntent = new Intent(SignupActivity.this, BookList.class);
                     startActivity(bookListIntent);
                     break;
+                case 3: Intent userPofileIntent = new Intent(SignupActivity.this, UserProfile.class);
+                    startActivity(userPofileIntent);
+                    break;
+                case 4: Intent searchIntent = new Intent(SignupActivity.this, SearchForm.class);
+                    startActivity(searchIntent);
+                    break;
             }
         }
     }
