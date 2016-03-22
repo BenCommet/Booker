@@ -21,7 +21,7 @@ public class SearchForm extends AppCompatActivity {
         setContentView(R.layout.activity_search_form);
 
         final EditText isbn = (EditText) findViewById(R.id.isbnSearch);
-//        isbn.setText("9781118102282");
+        isbn.setText("9781118102282");
         final Button searchBtn = (Button) findViewById(R.id.startSearch);
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
