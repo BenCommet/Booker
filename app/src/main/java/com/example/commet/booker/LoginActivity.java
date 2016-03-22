@@ -3,7 +3,9 @@ package com.example.commet.booker;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -24,11 +26,14 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -65,6 +70,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private GoogleQuery gq = new GoogleQuery();
+    private ListView drawerList;
+    private String [] navDrawerArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +79,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
         setupActionBar();
         // Set up the login form.
+
+        Resources res = getResources();
+
+        navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
+        drawerList = (ListView) findViewById(R.id.left_drawer);
+        drawerList.setAdapter(new ArrayAdapter<String>(LoginActivity.this, R.layout.nav_drawer_item, navDrawerArray));
+
+        drawerList.setOnItemClickListener(new DrawerItemClickListener());
+
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
@@ -377,5 +393,28 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
         }
     }
+
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            switch(position){
+                case 0: Toast.makeText(LoginActivity.this, "You are already on the home page.", Toast.LENGTH_LONG);
+                    break;
+                case 1: Intent signupIntent = new Intent(LoginActivity.this, SignupActivity.class);
+                    startActivity(signupIntent);
+                    break;
+                case 2: Intent bookListIntent = new Intent(LoginActivity.this, BookList.class);
+                    startActivity(bookListIntent);
+                    break;
+                case 3: Intent userPofileIntent = new Intent(LoginActivity.this, UserProfile.class);
+                    startActivity(userPofileIntent);
+                    break;
+                case 4: Intent searchIntent = new Intent(LoginActivity.this, SearchForm.class);
+                    startActivity(searchIntent);
+                    break;
+            }
+        }
+    }
+
 }
 

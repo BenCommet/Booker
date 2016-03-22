@@ -1,6 +1,7 @@
 package com.example.commet.booker;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,18 +9,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class UserProfile extends AppCompatActivity {
-
+    private ListView drawerList;
+    private String [] navDrawerArray;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Resources res = getResources();
+
+        navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
+        drawerList = (ListView) findViewById(R.id.left_drawer);
+        drawerList.setAdapter(new ArrayAdapter<String>(UserProfile.this, R.layout.nav_drawer_item, navDrawerArray));
+
+        drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         TextView name = (TextView) findViewById(R.id.userName);
         final Button postBook = (Button) findViewById(R.id.myBooks);
@@ -86,6 +96,9 @@ public class UserProfile extends AppCompatActivity {
                     break;
                 case 3: Intent userPofileIntent = new Intent(UserProfile.this, UserProfile.class);
                     startActivity(userPofileIntent);
+                    break;
+                case 4: Intent searchIntent = new Intent(UserProfile.this, SearchForm.class);
+                    startActivity(searchIntent);
                     break;
             }
         }
