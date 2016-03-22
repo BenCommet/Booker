@@ -23,7 +23,7 @@ public class BookData extends ParseObject{
         return getString("userEmail");
     }
 
-    public String getAuthor() {
-        return getString("author");
-    }
+//    public String getAuthor() {
+//        return getString("author");
+//    }
 }

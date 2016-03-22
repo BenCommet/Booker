@@ -3,15 +3,14 @@ package com.example.commet.booker;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import android.util.Log;
 import org.json.JSONObject;
 
 public class SearchForm extends AppCompatActivity {
@@ -20,13 +19,16 @@ public class SearchForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_form);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final EditText isbn = (EditText) findViewById(R.id.isbnSearch);
+        final Button searchBtn = (Button) findViewById(R.id.startSearch);
+
 
 //        isbn.setText("9781118102282");
 //        isbn.setText("9781118983843");
-
-        final Button searchBtn = (Button) findViewById(R.id.startSearch);
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +70,4 @@ public class SearchForm extends AppCompatActivity {
 //        }
 
     }
-
-
 }

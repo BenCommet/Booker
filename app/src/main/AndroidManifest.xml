@@ -35,7 +35,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.commet.booker.MainActivity" />
         </activity>
-        <activity android:name=".SignupActivity">
+        <activity
+            android:name=".SignupActivity"
+            android:label="@string/title_activity_signup">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.commet.booker.MainActivity" />
@@ -48,7 +50,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.commet.booker.MainActivity" />
         </activity>
-        <activity android:name=".QueryForm" />
         <activity
             android:name=".UserProfile"
             android:label="@string/title_activity_user_profile"
@@ -58,7 +59,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.commet.booker.MainActivity" />
         </activity>
-        <activity android:name=".SearchForm"></activity>
+        <activity
+            android:name=".SearchForm"
+            android:label="@string/title_activity_search_form"
+            android:parentActivityName=".UserProfile"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.commet.booker.UserProfile" />
+        </activity>
+        <activity
+            android:name=".QueryForm"
+            android:label="@string/title_activity_query_form"
+            android:parentActivityName=".UserProfile"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.commet.booker.UserProfile" />
+        </activity>
     </application>
 
 </manifest>

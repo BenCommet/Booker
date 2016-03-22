@@ -22,9 +22,10 @@ public class UserProfile extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         TextView name = (TextView) findViewById(R.id.userName);
-        final Button postBook = (Button) findViewById(R.id.myBooks);
+        final Button postBook = (Button) findViewById(R.id.userPost);
         final Button searchBook = (Button) findViewById(R.id.userSearch);
         final Button myBooks = (Button) findViewById(R.id.myBooks);
+        final Button viewAll = (Button) findViewById(R.id.viewAllUser);
         final Button signOut = (Button) findViewById(R.id.signOut);
 
 //      Need to pull in local name
@@ -70,6 +71,13 @@ public class UserProfile extends AppCompatActivity {
                 userLogout();
             }
         });
+        viewAll.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                displayAll();
+            }
+        });
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -106,6 +114,10 @@ public class UserProfile extends AppCompatActivity {
 
     }
 
+    private void displayAll() {
+        Intent intent = new Intent(this, BookList.class);
+        startActivity(intent);
+    }
     private void userLogout() {
 
     }

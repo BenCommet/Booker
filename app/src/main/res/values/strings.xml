@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">Barter Books</string>
-    <string name="title_activity_signup">SignupActivity</string>
+    <string name="title_activity_signup">Sign Up</string>
     <string-array name="nav_drawer_array">
         <item name="home">Home</item>
         <item name="Signup">Signup</item>
         <item name="Books">Books</item>
     </string-array>
     <string name="title_activity_login">Enter Book Info</string>
+    <string name="title_activity_search_form">Search For A Book</string>
+    <string name="title_activity_query_form">Submit A Book</string>
+    <string name="title_activity_user_profile">User Profile</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -20,5 +23,5 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_user_profile">UserProfile</string>
+
 </resources>

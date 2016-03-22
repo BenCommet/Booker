@@ -40,7 +40,6 @@ public class BookListAdapter extends ArrayAdapter<BookData> {
         }else{
             currentTextView.setPaintFlags(currentTextView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
         }
-
         return convertView;
     }
 }

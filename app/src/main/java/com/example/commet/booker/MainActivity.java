@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         final Button signup_button = (Button) findViewById(R.id.signup_button);
 
         username_text = (EditText)findViewById(R.id.username);
-        username_text.setText("jessedroe@gmail.com");
         pass_text = (EditText)findViewById(R.id.password);
+        username_text.setText("jessedroe@gmail.com");
         pass_text.setText("123456789");
 
         login_button.setOnClickListener( new View.OnClickListener() {
@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 login(v, username, password);
             }
         });
-
         signup_button.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -59,10 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 signup(v);
             }
         });
-
-
     }
-
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -87,9 +83,6 @@ public class MainActivity extends AppCompatActivity {
         if (checkUsername(user) && checkPassword(pass)) {
             Intent intent = new Intent(this, UserProfile.class);
             startActivity(intent);
-
-//            Intent intent = new Intent(this, LoginActivity.class);
-//            startActivity(intent);
         }
         else {
             Toast.makeText(getApplicationContext(), "Invalid login credentials! Valid email/password" +
@@ -118,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean checkUsername(String s) {
         return s.contains(String.valueOf('@')) != false;
     }
-
     public boolean checkPassword(String s) {
         return s.length() >= 8;
     }

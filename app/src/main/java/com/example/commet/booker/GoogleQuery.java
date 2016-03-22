@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
 import android.accounts.NetworkErrorException;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -23,7 +22,6 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> {
     @Override
     protected JSONObject doInBackground(String... bookURLs) {
         URL url;
-//        JSONArray book = new JSONArray();
         JSONObject book = null;
         HttpURLConnection urlConnection = null;
         Log.d("MainUrl", bookURLs[0]);
@@ -44,7 +42,6 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> {
             if(responseCode == HttpURLConnection.HTTP_OK) {
                 String responseStr = readStream(urlConnection.getInputStream());
                 book = new JSONObject(responseStr);
-//                JSONObject bookObj = book.getJSONObject(2);
                 Log.d("Create", book.toString());
                 return book;
             }
@@ -60,10 +57,8 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> {
             if(urlConnection != null)
                 urlConnection.disconnect();
         }
-//        JSONObject a = new JSONObject();
         return book;
     }
-
 
     private String readStream(InputStream in) {
         BufferedReader reader = null;
@@ -87,5 +82,4 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> {
         }
         return response.toString();
     }
-
 }
