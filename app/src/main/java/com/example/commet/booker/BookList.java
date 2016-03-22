@@ -28,9 +28,6 @@ public class BookList extends AppCompatActivity {
     private ListView drawerList;
     private String [] navDrawerArray;
 
-    public BookListAdapter getList() {
-        return bList;
-    }
 
     //This method, like its counterpart in main, creates
     @Override
@@ -38,11 +35,6 @@ public class BookList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
 
-        try {
-            Parse.initialize(this, "NpGnKkyFxdnd6ZHmLW9pBG16YtwOE7LtzskxCkg0", "yjTOPXcNIDTsswA3RQ4P8CAm797ykDhI30T57h7E");
-        } catch (Exception e){
-            e.printStackTrace();
-        }
 
         Resources res = getResources();
         //instantiating drawer items
@@ -51,7 +43,6 @@ public class BookList extends AppCompatActivity {
         drawerList.setAdapter(new ArrayAdapter<String>(BookList.this, R.layout.nav_drawer_item, navDrawerArray));
 
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
-
 
         //This connects us to parse. Without the error checking the app will force close
         //If this activity is opened again.
@@ -88,6 +79,12 @@ public class BookList extends AppCompatActivity {
                     startActivity(signupIntent);
                     break;
                 case 2: Toast.makeText(BookList.this, "You are looking at your books.", Toast.LENGTH_LONG);
+                    break;
+                case 3: Intent userPofileIntent = new Intent(BookList.this, UserProfile.class);
+                    startActivity(userPofileIntent);
+                    break;
+                case 4: Intent searchIntent = new Intent(BookList.this, SearchForm.class);
+                    startActivity(searchIntent);
                     break;
             }
         }
