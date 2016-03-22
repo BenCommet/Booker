@@ -21,6 +21,7 @@ public class SearchForm extends AppCompatActivity {
         setContentView(R.layout.activity_search_form);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final EditText isbn = (EditText) findViewById(R.id.isbnSearch);
         final Button searchBtn = (Button) findViewById(R.id.startSearch);
