@@ -26,7 +26,7 @@ public class SearchForm extends AppCompatActivity {
         final EditText isbn = (EditText) findViewById(R.id.isbnSearch);
         final Button searchBtn = (Button) findViewById(R.id.startSearch);
 
-//        isbn.setText("9781118102282");
+        isbn.setText("9781118102282");
 //        isbn.setText("9781118983843");
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +53,12 @@ public class SearchForm extends AppCompatActivity {
 
             TextView result =  (TextView) findViewById(R.id.resultSearch);
             result.setText(items);
+
+            ParseControl t = new ParseControl();
+
+            t.saveToDb(items, "jessedroe@gmail.com");
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
