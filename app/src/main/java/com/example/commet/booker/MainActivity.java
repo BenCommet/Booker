@@ -75,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
                 case 3: Intent userPofileIntent = new Intent(MainActivity.this, UserProfile.class);
                     startActivity(userPofileIntent);
                     break;
+                case 4: Intent searchIntent = new Intent(MainActivity.this, SearchForm.class);
+                    startActivity(searchIntent);
+                    break;
             }
         }
     }

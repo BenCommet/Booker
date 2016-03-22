@@ -5,6 +5,8 @@
         <item name="home">Home</item>
         <item name="Signup">Signup</item>
         <item name="Books">Books</item>
+        <item name="Search">Search</item>
+        <item name ="Profile">My Profile</item>
     </string-array>
     <string name="title_activity_login">Enter Book Info</string>
     <string name="title_activity_search_form">Search For A Book</string>

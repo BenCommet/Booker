@@ -23,5 +23,5 @@
 
     <include layout="@layout/content_search_form" />
 
-
 </android.support.design.widget.CoordinatorLayout>
+

@@ -38,6 +38,12 @@ public class BookList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
 
+        try {
+            Parse.initialize(this, "NpGnKkyFxdnd6ZHmLW9pBG16YtwOE7LtzskxCkg0", "yjTOPXcNIDTsswA3RQ4P8CAm797ykDhI30T57h7E");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
         Resources res = getResources();
         //instantiating drawer items
         navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
@@ -49,12 +55,6 @@ public class BookList extends AppCompatActivity {
 
         //This connects us to parse. Without the error checking the app will force close
         //If this activity is opened again.
-        try {
-            Parse.enableLocalDatastore(this);
-            Parse.initialize(this);
-        } catch (Exception e){
-            e.printStackTrace();
-        }
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
         ParseObject.registerSubclass(BookData.class);
 
@@ -64,6 +64,19 @@ public class BookList extends AppCompatActivity {
         updateData();
     }
 
+    public void updateData(){
+        ParseQuery<BookData> query = ParseQuery.getQuery(BookData.class);
+        query.findInBackground(new FindCallback<BookData>() {
+            @Override
+            public void done(List<BookData> objects, ParseException e) {
+                if(objects != null) {
+                    bList.clear();
+                    bList.addAll(objects);
+                }
+            }
+        });
+
+    }
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
@@ -81,17 +94,5 @@ public class BookList extends AppCompatActivity {
     }
 
     //This is the method that actually fills in our data
-    public void updateData(){
-        ParseQuery<BookData> query = ParseQuery.getQuery(BookData.class);
-        query.findInBackground(new FindCallback<BookData>() {
-            @Override
-            public void done(List<BookData> objects, ParseException e) {
-                if(objects != null) {
-                    bList.clear();
-                    bList.addAll(objects);
-                }
-            }
-        });
 
-    }
 }

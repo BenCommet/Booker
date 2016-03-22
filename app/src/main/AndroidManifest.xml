@@ -33,7 +33,7 @@
         <activity android:name=".BookList">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.commet.booker.MainActivity" />
+                android:value="com.example.commet.booker.UserProfile" />
         </activity>
         <activity
             android:name=".SignupActivity"
