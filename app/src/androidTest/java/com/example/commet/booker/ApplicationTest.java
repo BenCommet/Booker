@@ -109,4 +109,16 @@ public class ApplicationTest {
         intended(hasComponent(new ComponentName(getTargetContext(), SingleBookAdapter.class)));
     }
 
+    @Test
+    public void testLoginSearchBook(){
+        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
+        onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
+        onView(withText("Barter Books")).perform(closeSoftKeyboard());
+        onView(withText("Login")).perform(click());
+        onView(withId(R.id.userSearch)).perform(click());
+        onView(withId(R.id.startSearch)).perform(click());
+        intended(hasComponent(new ComponentName(getTargetContext(), SingleBookAdapter.class)));
+    }
+
+
 }
