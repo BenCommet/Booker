@@ -68,6 +68,7 @@ public class ApplicationTest {
         intended(hasComponent(new ComponentName(getTargetContext(), SignupActivity.class)));
     }
 
+    /*Tests for all Activities in app, validates navigation between activities from login*/
     @Test
     public void testButtonClickPostBook() {
         onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
