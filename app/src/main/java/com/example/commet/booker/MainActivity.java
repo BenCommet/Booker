@@ -1,6 +1,8 @@
 package com.example.commet.booker;
 
 import android.content.Intent;
+
+import com.parse.Parse;
 import com.parse.ParseObject;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -33,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
 //
 //        .build()
 //        );
+
+        ParseControl p = new ParseControl();
+        p.saveToDb("1212121212", "jessedroe@gmail.com");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

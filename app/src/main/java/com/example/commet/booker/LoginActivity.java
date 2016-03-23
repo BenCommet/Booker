@@ -69,7 +69,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private GoogleQuery gq = new GoogleQuery();
     private ListView drawerList;
     private String [] navDrawerArray;
 
@@ -103,14 +102,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-                getIsbnData();
-            }
-        });
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
@@ -323,21 +314,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int IS_PRIMARY = 1;
     }
 
-    public void getIsbnData() {
-        TextView isbnNum =  (TextView) findViewById(R.id.isbn);
-        String isbn = isbnNum.getText().toString();
-        JSONObject j = gq.doInBackground(isbn);
-        if (j != null) {
-            Log.d("CREATE", "Json Created Kill ME Please :)");
-            TextView test =  (TextView) findViewById(R.id.isbn);
-        }
-        else {
-            Log.d("CREATE", "Nope didnt work");
-        }
-
-    }
-
-    /**
+     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */

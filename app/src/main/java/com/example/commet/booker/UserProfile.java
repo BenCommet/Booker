@@ -124,7 +124,8 @@ public class UserProfile extends AppCompatActivity {
     }
 
     private void userBooks() {
-
+        Intent intent = new Intent(this, QueryListAdapter.class);
+        startActivity(intent);
     }
 
     private void displayAll() {

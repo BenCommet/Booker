@@ -19,11 +19,8 @@ public class BookData extends ParseObject{
         return getString("ISBN");
     }
 
-    public String getEmail() {
-        return getString("userEmail");
-    }
-
-//    public String getAuthor() {
-//        return getString("author");
+//    public String getEmail() {
+//        return getString("userEmail");
 //    }
+
 }

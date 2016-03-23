@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -57,6 +58,7 @@ public class BookList extends AppCompatActivity {
 
     public void updateData(){
         ParseQuery<BookData> query = ParseQuery.getQuery(BookData.class);
+        Log.d("Query Name", BookData.class.toString());
         query.findInBackground(new FindCallback<BookData>() {
             @Override
             public void done(List<BookData> objects, ParseException e) {

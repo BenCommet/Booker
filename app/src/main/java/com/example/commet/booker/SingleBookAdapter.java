@@ -41,8 +41,8 @@ public class SingleBookAdapter extends AppCompatActivity {
 //        Book b = (Book) i.getSerializableExtra("data");
 
         Log.d("Book INFO: ", b.title);
-
-        final TextView isbn = (TextView) findViewById(R.id.bookTitle);
+        final TextView title = (TextView) findViewById(R.id.bookTitle);
+        final TextView isbn = (TextView) findViewById(R.id.bookIsbn);
         final ImageView image = (ImageView) findViewById(R.id.bookImage);
         final TextView description = (TextView) findViewById(R.id.bookDescription);
         final TextView bookAuthor = (TextView) findViewById(R.id.bookAuthor);
@@ -50,6 +50,7 @@ public class SingleBookAdapter extends AppCompatActivity {
         final TextView bookPub = (TextView) findViewById(R.id.bookPub);
         final Button bookSearch = (Button) findViewById(R.id.bookSubmit);
 
+        title.setText(b.title);
         isbn.setText(b.isbn);
         description.setText(b.description);
         bookAuthor.setText(b.author);
