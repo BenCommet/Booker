@@ -24,7 +24,6 @@ import java.util.List;
 * This class creates a listview that holds the ISBN"s of our database's books.
 */
 public class BookList extends AppCompatActivity {
-    private BookListAdapter bList;
     private LocalAdapter bookList;
     private ListView listView;
     private ListView drawerList;
@@ -50,30 +49,22 @@ public class BookList extends AppCompatActivity {
 
         //This connects us to parse. Without the error checking the app will force close
         //If this activity is opened again.
-        ParseAnalytics.trackAppOpenedInBackground(getIntent());
-        ParseObject.registerSubclass(BookData.class);
 
-        bList = new BookListAdapter(this, new ArrayList<BookData>());
         bookList = new LocalAdapter(this, localBooks);
         listView = (ListView) findViewById(R.id.book_list);
         listView.setAdapter(bookList);
-        updateData();
-    }
-
-    public void updateData(){
-        ParseQuery<BookData> query = ParseQuery.getQuery(BookData.class);
-//        Log.d("Query Name", BookData.class.toString());
-        query.findInBackground(new FindCallback<BookData>() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void done(List<BookData> objects, ParseException e) {
-                if(objects != null) {
-                    bList.clear();
-                    bList.addAll(objects);
-                }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object listItem = listView.getItemAtPosition(position);
+                String isbn = listItem.toString();
+                Intent detailedView = new Intent(BookList.this, SingleBookAdapter.class);
+                detailedView.putExtra("data", isbn);
+                startActivity(detailedView);
             }
-        });
-
+        } );
     }
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {

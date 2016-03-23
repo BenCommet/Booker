@@ -47,11 +47,11 @@ public class SingleBookAdapter extends AppCompatActivity {
         final Button bookSearch = (Button) findViewById(R.id.bookSubmit);
 
         title.setText(b.title);
-        isbn.setText(b.isbn);
-        description.setText(b.description);
-        bookAuthor.setText(b.author);
-        bookPub.setText(b.publisher);
-        bookPubDate.setText(b.dataPub);
+        isbn.setText("ISBN: " + b.isbn);
+        description.setText(b.description + "\n");
+        bookAuthor.setText("Author: " + b.author);
+        bookPub.setText("Published By: " + b.publisher);
+        bookPubDate.setText("Publishing Date: " + b.dataPub);
         image.setImageDrawable(b.largeImg);
     }
 }

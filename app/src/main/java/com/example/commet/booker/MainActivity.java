@@ -87,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
                 case 2: Intent bookListIntent = new Intent(MainActivity.this, BookList.class);
                     startActivity(bookListIntent);
                     break;
-                case 3: Intent userPofileIntent = new Intent(MainActivity.this, UserProfile.class);
+                case 3: Intent userPofileIntent = new Intent(MainActivity.this, SearchForm.class);
                     startActivity(userPofileIntent);
                     break;
-                case 4: Intent searchIntent = new Intent(MainActivity.this, SearchForm.class);
+                case 4: Intent searchIntent = new Intent(MainActivity.this, UserProfile.class);
                     startActivity(searchIntent);
                     break;
             }
