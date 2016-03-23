@@ -52,7 +52,7 @@ public class ApplicationTest {
         onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
         onView(withText("Barter Books")).perform(closeSoftKeyboard());
         onView(withText("Login")).perform(click());
-        intended(hasComponent(new ComponentName(getTargetContext(), BookList.class)));
+        intended(hasComponent(new ComponentName(getTargetContext(), UserProfile.class)));
     }
 
     /*
@@ -61,11 +61,52 @@ public class ApplicationTest {
     */
     @Test
     public void testButtonClickSignUp() {
-//        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
-//        onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
-        onView(withText("Barter Books")).perform(closeSoftKeyboard());
-        onView(withText("Signup")).perform(click());
+        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
+        onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
+        onView(withId(R.id.signup_button)).perform(closeSoftKeyboard());
+        onView(withId(R.id.signup_button)).perform(click());
         intended(hasComponent(new ComponentName(getTargetContext(), SignupActivity.class)));
-
     }
+
+    @Test
+    public void testButtonClickPostBook() {
+        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
+        onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
+        onView(withText("Barter Books")).perform(closeSoftKeyboard());
+        onView(withText("Login")).perform(click());
+        onView(withId(R.id.userPost)).perform(click());
+        intended(hasComponent(new ComponentName(getTargetContext(), QueryForm.class)));
+    }
+
+    @Test
+    public void testButtonClickSearchBook() {
+        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
+        onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
+        onView(withText("Barter Books")).perform(closeSoftKeyboard());
+        onView(withText("Login")).perform(click());
+        onView(withId(R.id.userSearch)).perform(click());
+        intended(hasComponent(new ComponentName(getTargetContext(), SearchForm.class)));
+    }
+
+    @Test
+    public void testButtonClickViewAllBooks() {
+        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
+        onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
+        onView(withText("Barter Books")).perform(closeSoftKeyboard());
+        onView(withText("Login")).perform(click());
+        onView(withId(R.id.viewAllUser)).perform(click());
+        intended(hasComponent(new ComponentName(getTargetContext(), BookList.class)));
+    }
+
+    @Test
+    public void testLoginPostSearch(){
+        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
+        onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
+        onView(withText("Barter Books")).perform(closeSoftKeyboard());
+        onView(withText("Login")).perform(click());
+        onView(withId(R.id.userPost)).perform(click());
+        onView(withId(R.id.querySearchBtn)).perform(click());
+        intended(hasComponent(new ComponentName(getTargetContext(), SingleBookAdapter.class)));
+    }
+
 }

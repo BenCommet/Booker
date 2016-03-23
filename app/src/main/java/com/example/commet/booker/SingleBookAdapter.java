@@ -47,7 +47,7 @@ public class SingleBookAdapter extends AppCompatActivity {
         final Button bookSearch = (Button) findViewById(R.id.bookSubmit);
 
         title.setText(b.title);
-        isbn.setText("ISBN: " + b.isbn);
+        isbn.setText("ISBN: " + b.isbn + "\n");
         description.setText(b.description + "\n");
         bookAuthor.setText("Author: " + b.author);
         bookPub.setText("Published By: " + b.publisher);
