@@ -67,6 +67,8 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> implements 
                 urlConnection.disconnect();
         }
         return book;
+
+
     }
 
     private String readStream(InputStream in) {

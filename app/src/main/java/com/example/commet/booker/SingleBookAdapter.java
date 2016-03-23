@@ -33,13 +33,10 @@ public class SingleBookAdapter extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
-        Log.d("INPUT isbn: ", strISBN);
         Book b =  new Book(strISBN);
-
 //        Intent i = getIntent();
 //        Book b = (Book) i.getSerializableExtra("data");
 
-        Log.d("Book INFO: ", b.title);
         final TextView title = (TextView) findViewById(R.id.bookTitle);
         final TextView isbn = (TextView) findViewById(R.id.bookIsbn);
         final ImageView image = (ImageView) findViewById(R.id.bookImage);

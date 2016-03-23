@@ -14,10 +14,6 @@ package com.example.commet.booker;
 public class LocalAdapter extends ArrayAdapter<String> {
     LocalAdapter(Context context, String[] books){
         super(context, R.layout.book_list_item, books);
-        if (android.os.Build.VERSION.SDK_INT > 9) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
     }
 
     @Override
@@ -25,6 +21,10 @@ public class LocalAdapter extends ArrayAdapter<String> {
         LayoutInflater bookInflater = LayoutInflater.from(getContext());
         View customView = bookInflater.inflate(R.layout.book_list_item, parent, false);
 
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
 
         String currentISBN = getItem(position);
         Book currentBook = new Book(currentISBN);
@@ -32,6 +32,4 @@ public class LocalAdapter extends ArrayAdapter<String> {
         titleText.setText(currentBook.title);
         return customView;
     }
-
-
 }

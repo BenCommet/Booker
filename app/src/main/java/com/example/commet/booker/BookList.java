@@ -62,7 +62,7 @@ public class BookList extends AppCompatActivity {
 
     public void updateData(){
         ParseQuery<BookData> query = ParseQuery.getQuery(BookData.class);
-        Log.d("Query Name", BookData.class.toString());
+//        Log.d("Query Name", BookData.class.toString());
         query.findInBackground(new FindCallback<BookData>() {
             @Override
             public void done(List<BookData> objects, ParseException e) {
