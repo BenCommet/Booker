@@ -8,6 +8,19 @@
         <item name="Search">Search</item>
         <item name="Profile">My Profile</item>
     </string-array>
+
+    <string-array name="local_isbn_array">
+        <item>9781118102282</item>
+        <item>9781119067900</item>
+        <item>9781118983843</item>
+        <item>9780321884497</item>
+        <item>9780071808552</item>
+        <item>9780321776419</item>
+        <item>9780132149181</item>
+        <item>9780131395312</item>
+        <item>9780073229720</item>
+    </string-array>
+
     <string name="title_activity_login">Enter Book Info</string>
     <string name="title_activity_search_form">Search For A Book</string>
     <string name="title_activity_query_form">Submit A Book</string>

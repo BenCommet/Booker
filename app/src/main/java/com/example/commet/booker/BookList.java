@@ -25,9 +25,11 @@ import java.util.List;
 */
 public class BookList extends AppCompatActivity {
     private BookListAdapter bList;
+    private LocalAdapter bookList;
     private ListView listView;
     private ListView drawerList;
     private String [] navDrawerArray;
+    private String [] localBooks;
 
 
     //This method, like its counterpart in main, creates
@@ -40,6 +42,7 @@ public class BookList extends AppCompatActivity {
         Resources res = getResources();
         //instantiating drawer items
         navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
+        localBooks = res.getStringArray(R.array.local_isbn_array);
         drawerList = (ListView) findViewById(R.id.left_drawer);
         drawerList.setAdapter(new ArrayAdapter<String>(BookList.this, R.layout.nav_drawer_item, navDrawerArray));
 
@@ -51,8 +54,9 @@ public class BookList extends AppCompatActivity {
         ParseObject.registerSubclass(BookData.class);
 
         bList = new BookListAdapter(this, new ArrayList<BookData>());
+        bookList = new LocalAdapter(this, localBooks);
         listView = (ListView) findViewById(R.id.book_list);
-        listView.setAdapter(bList);
+        listView.setAdapter(bookList);
         updateData();
     }
 
