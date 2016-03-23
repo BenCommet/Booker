@@ -46,11 +46,7 @@ public class QueryForm extends AppCompatActivity implements Serializable{
 
             }
         });
-
-
     }
-
-
     private void search(String isbnData) {
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -60,26 +56,6 @@ public class QueryForm extends AppCompatActivity implements Serializable{
         Intent searchIntent = new Intent(QueryForm.this, SingleBookAdapter.class);
         searchIntent.putExtra("data", isbnData);
         startActivity(searchIntent);
-
-
-//        try {
-//            data.add(j.getJSONArray("items").getJSONObject(0).getJSONObject("volumeInfo").getString("title"));
-//            data.add(j.getJSONArray("items").getJSONObject(0).getJSONObject("volumeInfo").getJSONArray("authors").get(0));
-//            data.add(j.getJSONArray("items").getJSONObject(0).getJSONObject("volumeInfo").getString("publishedDate"));
-//            data.add(j.getJSONArray("items").getJSONObject(0).getJSONObject("volumeInfo").getString("description"));
-//        data.add(gq);
-//
-//        Log.d("Create Items", data.toString());
-//
-//
-//            ParseControl t = new ParseControl();
-//            t.saveToDb(, "jessedroe@gmail.com");
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-
-
     }
 }
 

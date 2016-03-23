@@ -33,12 +33,11 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> implements 
 
         URL url;
         HttpURLConnection urlConnection = null;
-        Log.d("MainUrl", bookURLs[0]);
         String searchUrl = "https://www.googleapis.com/books/v1/volumes?"+
                 "q=isbn:" + bookURLs[0];
 
 //                + "&key=AIzaSyAvugTGEcCdKhLAeWnpUgAMcOoV5HuuwUU";
-        Log.d("URL: ", searchUrl);
+
 //        String searchUrl = "https://www.googleapis.com/books/v1/volumes?q=isbn:9781118102282&key=AIzaSyAvugTGEcCdKhLAeWnpUgAMcOoV5HuuwUU";
         try {
             url = new URL(searchUrl);
@@ -53,7 +52,6 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> implements 
             if(responseCode == HttpURLConnection.HTTP_OK) {
                 String responseStr = readStream(urlConnection.getInputStream());
                 book = new JSONObject(responseStr);
-                Log.d("Create", book.toString());
                 return book;
             }
             else {

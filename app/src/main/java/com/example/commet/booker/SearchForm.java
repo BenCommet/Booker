@@ -1,5 +1,6 @@
 package com.example.commet.booker;
 
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,8 +28,8 @@ public class SearchForm extends AppCompatActivity {
         final EditText isbn = (EditText) findViewById(R.id.isbnSearch);
         final Button searchBtn = (Button) findViewById(R.id.startSearch);
 
-        isbn.setText("9781118102282");
-//        isbn.setText("9781118983843");
+//        isbn.setText("9781118102282");
+        isbn.setText("9781118983843");
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,10 +46,13 @@ public class SearchForm extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
-        Book temp = new Book(isbnData);
+//        Book temp = new Book(isbnData);
+//        TextView result =  (TextView) findViewById(R.id.resultSearch);
+//        result.setText(temp.title);
 
-        TextView result =  (TextView) findViewById(R.id.resultSearch);
-        result.setText(temp.title);
+        Intent searchIntent = new Intent(SearchForm.this, SingleBookAdapter.class);
+        searchIntent.putExtra("data", isbnData);
+        startActivity(searchIntent);
 
 //        JSONObject j = gq.doInBackground(isbnData);
 //        String items = "";

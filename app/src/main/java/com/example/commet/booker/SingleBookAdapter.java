@@ -36,7 +36,6 @@ public class SingleBookAdapter extends AppCompatActivity {
         Log.d("INPUT isbn: ", strISBN);
         Book b =  new Book(strISBN);
 
-
 //        Intent i = getIntent();
 //        Book b = (Book) i.getSerializableExtra("data");
 
@@ -57,7 +56,5 @@ public class SingleBookAdapter extends AppCompatActivity {
         bookPub.setText(b.publisher);
         bookPubDate.setText(b.dataPub);
         image.setImageDrawable(b.largeImg);
-
     }
-
 }

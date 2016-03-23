@@ -1,6 +1,7 @@
 package com.example.commet.booker;
 
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
 import com.parse.FindCallback;
 import com.parse.ParseObject;
@@ -24,37 +25,32 @@ public class ParseControl {
         Log.d("ParsePost", "Post Complete");
     }
 
-//    public Boolean isInDB(String isbn, String email) {
-//        ParseQuery<ParseObject> query = ParseQuery.getQuery("bookData");
-////        query.whereEqualTo("ISBN", "isbn");
-//        final List<ParseObject> tempList = null;
-//        query.findInBackground(new FindCallback<ParseObject>() {
-//            @Override
-//            public void done(List<ParseObject> scoreList, ParseException e) {
-//                if (e == null) {
-//                    Log.d("score", "Retrieved " + scoreList.size() + " scores");
-//                    tempList = scoreList;
-//                } else {
-//                    Log.d("score", "Error: " + e.getMessage());
-//                }
-//            }
-//        });
-//
-//        if (tempList.size() > 0) {
-//            return true;
-//        }
-//    }
+    public void isInDB(String isbn, String email) {
 
+        final ArrayList books = new ArrayList<Book>();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("bookData");
+        query.whereEqualTo("ISBN", "isbn");
+        final List<ParseObject> tempList = null;
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> bookList, com.parse.ParseException e) {
 
+                if (e == null) {
+                    // If there are results, update the list of posts
+                    // and notify the adapter
+                    books.clear();
+                    for (ParseObject book : bookList) {
+                        Book note = new Book(book.getString("ISBN"));
+                        books.add(note);
+                        Log.d("score", "Retrieved " + bookList.size() + " scores");
+                    }
+                } else {
 
-//    public ArrayList<String> findByEmail(String email) {
-//
-//    }
-//
-//    public ArrayList<String> findByISBN(String isbn) {
-//
-//    }
+                    Log.d(getClass().getSimpleName(), "Error: " + e.getMessage());
+                }//
+            }
+        });
 
-
+    }
 
 }

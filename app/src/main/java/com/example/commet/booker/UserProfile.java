@@ -3,8 +3,6 @@ package com.example.commet.booker;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -124,12 +122,12 @@ public class UserProfile extends AppCompatActivity {
     }
 
     private void userBooks() {
-        Intent intent = new Intent(this, QueryListAdapter.class);
+        Intent intent = new Intent(UserProfile.this, QueryListAdapter.class);
         startActivity(intent);
     }
 
     private void displayAll() {
-        Intent intent = new Intent(this, BookList.class);
+        Intent intent = new Intent(UserProfile.this, BookList.class);
         startActivity(intent);
     }
     private void userLogout() {

@@ -9,6 +9,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.ContactsContract;
+import android.support.v7.widget.Toolbar;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,34 +25,34 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.w3c.dom.Text;
+
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class QueryListAdapter extends ListActivity {
 
-    private List<Book> books;
-
-//    QueryListAdapter(Context context, String[] books){
-//        super(context, R.layout.book_list_item, books);
-//
-//    }
-
+    private ArrayList<Book> books;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_query_list_adapter);
-
-        ParseUser currentUser = ParseUser.getCurrentUser();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        final TextView title = (TextView) findViewById(R.id.listTitle);
+//        ParseUser currentUser = ParseUser.getCurrentUser();
 
 //        if (currentUser == null) {
 //            loadLoginView();
 //        }
 
         books = new ArrayList<Book>();
-        ArrayAdapter<Book> adapter = new ArrayAdapter<Book>(this,
-                R.layout.activity_query_list_adapter);
+        ArrayAdapter adapter = new ArrayAdapter<Book>(this,
+                R.layout.activity_query_list_adapter, books);
         setListAdapter(adapter);
 
         refreshPostList();
@@ -59,8 +60,8 @@ public class QueryListAdapter extends ListActivity {
 
     private void refreshPostList() {
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("bookData");
-        query.whereEqualTo("userEmail", "temp10@mail.gvsu.edu");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("TestData");
+//        query.whereEqualTo("userEmail", "temp10@mail.gvsu.edu");
 
         setProgressBarIndeterminateVisibility(true);
 
@@ -70,14 +71,14 @@ public class QueryListAdapter extends ListActivity {
             @Override
             public void done(List<ParseObject> bookList, com.parse.ParseException e) {
                 setProgressBarIndeterminateVisibility(false);
-                Log.d("BookList", bookList.toString());
+//                Log.d("BookList", bookList.toString());
                 if (e == null) {
                     // If there are results, update the list of posts
                     // and notify the adapter
                     books.clear();
                     for (ParseObject book : bookList) {
-                        Book note = new Book(book.getString("ISBN"));
-                        books.add(note);
+                        Book b = new Book(book.getString("Isbn"));
+                        books.add(b);
                     }
                     ((ArrayAdapter<Book>) getListAdapter()).notifyDataSetChanged();
                 } else {

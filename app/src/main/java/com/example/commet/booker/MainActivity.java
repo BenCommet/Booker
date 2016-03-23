@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
 //        .build()
 //        );
 
-        ParseControl p = new ParseControl();
-        p.saveToDb("1212121212", "jessedroe@gmail.com");
+//        ParseControl p = new ParseControl();
+//        p.saveToDb("1212121212", "jessedroe@gmail.com");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
