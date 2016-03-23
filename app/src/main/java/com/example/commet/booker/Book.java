@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Created by jesse on 3/22/2016.
  */
 
-@SuppressWarnings("serial")
+/*Object to hold all book related data and contain Google Api queries*/
 public class Book implements Serializable{
 
     GoogleQuery g = new GoogleQuery();

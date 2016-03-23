@@ -46,44 +46,9 @@ public class SearchForm extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
-//        Book temp = new Book(isbnData);
-//        TextView result =  (TextView) findViewById(R.id.resultSearch);
-//        result.setText(temp.title);
-
         Intent searchIntent = new Intent(SearchForm.this, SingleBookAdapter.class);
         searchIntent.putExtra("data", isbnData);
         startActivity(searchIntent);
-
-//        JSONObject j = gq.doInBackground(isbnData);
-//        String items = "";
-
-//        try {
-//            items = j.getJSONArray("items").getJSONObject(0).getJSONObject("volumeInfo").getString("title");
-//            Log.d("Create Items", items);
-//
-//            TextView result =  (TextView) findViewById(R.id.resultSearch);
-//            result.setText(items);
-//
-//            ParseControl t = new ParseControl();
-//
-//            t.saveToDb(items, "jessedroe@gmail.com");
-//
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-
-//        if (j != null) {
-//            Log.d("CREATE", "Json Created");
-////            Log.d("Create", j.toString()   );
-//
-//            TextView result =  (TextView) findViewById(R.id.resultSearch);
-//            result.setText(items);
-//
-//        }
-//        else {
-//            Log.d("CREATE", "Creation Failed");
-//        }
 
     }
 }

@@ -13,6 +13,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+/*
+* Main Activity of application, connects all services together
+*
+* */
 public class UserProfile extends AppCompatActivity {
     private ListView drawerList;
     private String [] navDrawerArray;
@@ -36,19 +41,11 @@ public class UserProfile extends AppCompatActivity {
         final Button viewAll = (Button) findViewById(R.id.viewAllUser);
         final Button signOut = (Button) findViewById(R.id.signOut);
 
-//      Need to pull in local name
+//      Need to pull in local name once authentication is implemented
         name.setText("Jesse");
 
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         postBook.setOnClickListener(new View.OnClickListener() {

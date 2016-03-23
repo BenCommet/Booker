@@ -17,6 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
+ * Creates a Http query to the Google Books API and returns JSON representation of data
+ *
  * Created by jesse on 3/19/2016.
  */
 public class GoogleQuery extends AsyncTask<String, Void, JSONObject> implements Serializable{
@@ -67,8 +69,6 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> implements 
                 urlConnection.disconnect();
         }
         return book;
-
-
     }
 
     private String readStream(InputStream in) {

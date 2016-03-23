@@ -27,18 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        ParseControl.initialize(new ParseControl.Configuration.Builder(myContext)
-//                .applicationId("YOUR_APP_ID")
-//                .server("http://YOUR_PARSE_SERVER:1337/parse")
-//
-//        ...
-//
-//        .build()
-//        );
-
-//        ParseControl p = new ParseControl();
-//        p.saveToDb("1212121212", "jessedroe@gmail.com");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Resources res = getResources();
@@ -108,18 +96,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
     }
-
-//    public void login(View view, String user, String pass){
-//        if (checkUsername(user) && checkPassword(pass)) {
-//            Intent intent = new Intent(this, BookList.class);
-//            startActivity(intent);
-//        }
-//        else {
-//            Toast.makeText(getApplicationContext(), "Invalid login credentials! Valid email/password" +
-//                            " required.",
-//                    Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
     public void signup(View view){
             Intent intent = new Intent(this, SignupActivity.class);
