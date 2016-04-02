@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -35,6 +36,8 @@ import java.util.List;
 public class QueryListAdapter extends ListActivity {
 
     private ArrayList<Book> books;
+    private ListView drawerList;
+    private String [] navDrawerArray;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

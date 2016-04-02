@@ -48,7 +48,7 @@ public class ApplicationTest {
     */
     @Test
     public void testButtonClickLogin() {
-        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
+        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@gmail.com"));
         onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
         onView(withText("Barter Books")).perform(closeSoftKeyboard());
         onView(withText("Login")).perform(click());
@@ -61,7 +61,7 @@ public class ApplicationTest {
     */
     @Test
     public void testButtonClickSignUp() {
-        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
+        onView(withId(R.id.username)).perform(clearText(), typeText("bencommet@gmail.com"));
         onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
         onView(withId(R.id.signup_button)).perform(closeSoftKeyboard());
         onView(withId(R.id.signup_button)).perform(click());
@@ -71,7 +71,7 @@ public class ApplicationTest {
     /*Tests for all Activities in app, validates navigation between activities from login*/
     @Test
     public void testButtonClickPostBook() {
-        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
+        onView(withId(R.id.username)).perform(clearText(), typeText("commetb@mail.gvsu.edu"));
         onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
         onView(withText("Barter Books")).perform(closeSoftKeyboard());
         onView(withText("Login")).perform(click());
@@ -79,9 +79,10 @@ public class ApplicationTest {
         intended(hasComponent(new ComponentName(getTargetContext(), QueryForm.class)));
     }
 
+    /*Tests going from main activity to login Activity to the Search Activity*/
     @Test
     public void testButtonClickSearchBook() {
-        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
+        onView(withId(R.id.username)).perform(clearText(), typeText("brandon@facebook.com"));
         onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
         onView(withText("Barter Books")).perform(closeSoftKeyboard());
         onView(withText("Login")).perform(click());
@@ -89,9 +90,10 @@ public class ApplicationTest {
         intended(hasComponent(new ComponentName(getTargetContext(), SearchForm.class)));
     }
 
+    /*Tests going from main activity to login Activity to the view all books activity*/
     @Test
     public void testButtonClickViewAllBooks() {
-        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
+        onView(withId(R.id.username)).perform(clearText(), typeText("fish@sea.com"));
         onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
         onView(withText("Barter Books")).perform(closeSoftKeyboard());
         onView(withText("Login")).perform(click());
@@ -99,9 +101,10 @@ public class ApplicationTest {
         intended(hasComponent(new ComponentName(getTargetContext(), BookList.class)));
     }
 
+    /*Tests going from main activity to login Activity to the user actvity to the search activity*/
     @Test
     public void testLoginPostSearch(){
-        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
+        onView(withId(R.id.username)).perform(clearText(), typeText("mike@mike.com"));
         onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
         onView(withText("Barter Books")).perform(closeSoftKeyboard());
         onView(withText("Login")).perform(click());
@@ -110,9 +113,12 @@ public class ApplicationTest {
         intended(hasComponent(new ComponentName(getTargetContext(), SingleBookAdapter.class)));
     }
 
+    /*Tests going from main activity to login activity to the user activity to the search activity
+    then it performs a search
+     */
     @Test
     public void testLoginSearchBook(){
-        onView(withId(R.id.username)).perform(clearText(), typeText("jesse@"));
+        onView(withId(R.id.username)).perform(clearText(), typeText("android@google.com"));
         onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
         onView(withText("Barter Books")).perform(closeSoftKeyboard());
         onView(withText("Login")).perform(click());
@@ -120,6 +126,5 @@ public class ApplicationTest {
         onView(withId(R.id.startSearch)).perform(click());
         intended(hasComponent(new ComponentName(getTargetContext(), SingleBookAdapter.class)));
     }
-
 
 }

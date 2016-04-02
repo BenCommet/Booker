@@ -13,9 +13,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class SingleBookAdapter extends AppCompatActivity {
+
+    private ListView drawerList;
+    private String [] navDrawerArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

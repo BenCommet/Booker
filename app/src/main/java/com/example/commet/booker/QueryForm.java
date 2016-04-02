@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -22,6 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QueryForm extends AppCompatActivity implements Serializable{
+
+    private ListView drawerList;
+    private String [] navDrawerArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

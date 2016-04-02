@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -16,6 +17,8 @@ import org.json.JSONObject;
 
 public class SearchForm extends AppCompatActivity {
     private GoogleQuery gq = new GoogleQuery();
+    private ListView drawerList;
+    private String [] navDrawerArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

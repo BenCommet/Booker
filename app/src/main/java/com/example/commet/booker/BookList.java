@@ -87,6 +87,5 @@ public class BookList extends AppCompatActivity {
         }
     }
 
-    //This is the method that actually fills in our data
 
 }

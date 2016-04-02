@@ -383,11 +383,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 case 2: Intent bookListIntent = new Intent(LoginActivity.this, BookList.class);
                     startActivity(bookListIntent);
                     break;
-                case 3: Intent userPofileIntent = new Intent(LoginActivity.this, UserProfile.class);
-                    startActivity(userPofileIntent);
-                    break;
-                case 4: Intent searchIntent = new Intent(LoginActivity.this, SearchForm.class);
+                case 3: Intent searchIntent = new Intent(LoginActivity.this, SearchForm.class);
                     startActivity(searchIntent);
+                    break;
+                case 4: Intent userProfileIntent = new Intent(LoginActivity.this, UserProfile.class);
+                    startActivity(userProfileIntent);
                     break;
             }
         }
