@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -53,5 +54,35 @@ public class SearchForm extends AppCompatActivity {
         searchIntent.putExtra("data", isbnData);
         startActivity(searchIntent);
 
+    }
+
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            switch(position){
+                case 0:
+                    break;
+                case 1: Intent signupIntent = new Intent(SearchForm.this, SignupActivity.class);
+                    startActivity(signupIntent);
+                    break;
+                case 2: Intent bookListIntent = new Intent(SearchForm.this, BookList.class);
+                    startActivity(bookListIntent);
+                    break;
+                case 3: Intent userPofileIntent = new Intent(SearchForm.this, BookList.class);
+                    startActivity(userPofileIntent);
+                    break;
+                case 4: Intent searchIntent = new Intent(SearchForm.this, SearchForm.class);
+                    startActivity(searchIntent);
+                    break;
+                case 5:
+                    Intent profileIntent = new Intent(SearchForm.this, UserProfile.class);
+                    startActivity(profileIntent);
+                    break;
+                case 6:
+                    Intent postIntent = new Intent(SearchForm.this, QueryForm.class);
+                    startActivity(postIntent);
+                    break;
+            }
+        }
     }
 }
