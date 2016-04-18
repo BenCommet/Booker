@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,10 +24,9 @@ public class SearchForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_form);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final EditText isbn = (EditText) findViewById(R.id.isbnSearch);
+        final Button scanBtn = (Button) findViewById(R.id.scanIsbn);
         final Button searchBtn = (Button) findViewById(R.id.startSearch);
 
 //        isbn.setText("9781118102282");
@@ -36,6 +37,13 @@ public class SearchForm extends AppCompatActivity {
             public void onClick(View v) {
                 String isbnData = isbn.getText().toString();
                 search(isbnData);
+            }
+        });
+
+        scanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scan();
             }
         });
     }
@@ -50,5 +58,9 @@ public class SearchForm extends AppCompatActivity {
         searchIntent.putExtra("data", isbnData);
         startActivity(searchIntent);
 
+    }
+
+    private void scan () {
+        new IntentIntegrator(this).initiateScan(); // `this` is the current Activity
     }
 }

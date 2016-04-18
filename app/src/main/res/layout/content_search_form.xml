@@ -37,10 +37,22 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Scan ISBN"
+            android:id="@+id/scanIsbn"
+            android:layout_marginTop="26dp"
+            android:layout_below="@+id/isbnSearch"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Start Search"
             android:id="@+id/startSearch"
             android:layout_marginTop="26dp"
-            android:layout_below="@+id/isbnSearch"
+            android:layout_below="@+id/scanIsbn"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
