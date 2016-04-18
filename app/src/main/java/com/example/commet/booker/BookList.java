@@ -2,6 +2,7 @@ package com.example.commet.booker;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,7 @@ public class BookList extends AppCompatActivity {
     private ListView drawerList;
     private String [] navDrawerArray;
     private String [] localBooks;
+    private TypedArray img;
 
 
     //This method, like its counterpart in main, creates
@@ -42,8 +44,9 @@ public class BookList extends AppCompatActivity {
         //instantiating drawer items
         navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
         localBooks = res.getStringArray(R.array.local_isbn_array);
+        img = res.obtainTypedArray(R.array.nav_images);
         drawerList = (ListView) findViewById(R.id.left_drawer);
-        drawerList.setAdapter(new ArrayAdapter<String>(BookList.this, R.layout.nav_drawer_item, navDrawerArray));
+        drawerList.setAdapter(new NavDrawerAdapter(BookList.this, navDrawerArray, img));
 
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -69,24 +72,31 @@ public class BookList extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             switch(position){
-                case 0: Intent mainIntent = new Intent(BookList.this, MainActivity.class);
-                    startActivity(mainIntent);
+                case 0:
                     break;
                 case 1: Intent signupIntent = new Intent(BookList.this, SignupActivity.class);
                     startActivity(signupIntent);
                     break;
-                case 2: Toast.makeText(BookList.this, "You are looking at your books.", Toast.LENGTH_LONG);
+                case 2: Intent bookListIntent = new Intent(BookList.this, BookList.class);
+                    startActivity(bookListIntent);
                     break;
-                case 3: Intent userPofileIntent = new Intent(BookList.this, UserProfile.class);
+                case 3: Intent userPofileIntent = new Intent(BookList.this, BookList.class);
                     startActivity(userPofileIntent);
                     break;
                 case 4: Intent searchIntent = new Intent(BookList.this, SearchForm.class);
                     startActivity(searchIntent);
                     break;
+                case 5:
+                    Intent profileIntent = new Intent(BookList.this, UserProfile.class);
+                    startActivity(profileIntent);
+                    break;
+                case 6:
+                    Intent postIntent = new Intent(BookList.this, QueryForm.class);
+                    startActivity(postIntent);
+                    break;
             }
         }
     }
 
-    //This is the method that actually fills in our data
 
 }

@@ -4,15 +4,17 @@
     <string-array name="nav_drawer_array">
         <item name="home">Home</item>
         <item name="Signup">Signup</item>
-        <item name="Books">Books</item>
-        <item name="Search">Search</item>
-        <item name="Profile">My Profile</item>
+        <item name="my_books">My Books</item>
+        <item name="all_books">All Books</item>
+        <item name="search">Search</item>
+        <item name="profile">My Profile</item>
+        <item name="Post">Post a Book</item>
     </string-array>
 
     <string-array name="local_isbn_array">
         <item>9781118102282</item>
-        <!--<item>9781119067900</item>-->
-        <!--<item>9781118983843</item>-->
+        <item>9781119067900</item>
+        <item>9781118983843</item>
         <!--<item>9780321884497</item>-->
         <!--<item>9780071808552</item>-->
         <!--<item>9780321776419</item>-->

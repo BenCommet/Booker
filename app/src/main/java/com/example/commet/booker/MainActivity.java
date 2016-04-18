@@ -5,6 +5,7 @@ import android.content.Intent;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText pass_text;
     private ListView drawerList;
     private String [] navDrawerArray;
+    private TypedArray img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
         drawerList = (ListView) findViewById(R.id.left_drawer);
-        drawerList.setAdapter(new ArrayAdapter<String>(MainActivity.this, R.layout.nav_drawer_item, navDrawerArray));
-
+        img = res.obtainTypedArray(R.array.nav_images);
+        drawerList.setAdapter(new NavDrawerAdapter(MainActivity.this, navDrawerArray, img));
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         final Button login_button = (Button) findViewById(R.id.login_button);
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             switch(position){
-                case 0: Toast.makeText(MainActivity.this, "You are already on the home page.", Toast.LENGTH_LONG);
+                case 0:
                     break;
                 case 1: Intent signupIntent = new Intent(MainActivity.this, SignupActivity.class);
                     startActivity(signupIntent);
@@ -75,11 +77,19 @@ public class MainActivity extends AppCompatActivity {
                 case 2: Intent bookListIntent = new Intent(MainActivity.this, BookList.class);
                     startActivity(bookListIntent);
                     break;
-                case 3: Intent userPofileIntent = new Intent(MainActivity.this, SearchForm.class);
+                case 3: Intent userPofileIntent = new Intent(MainActivity.this, BookList.class);
                     startActivity(userPofileIntent);
                     break;
-                case 4: Intent searchIntent = new Intent(MainActivity.this, UserProfile.class);
+                case 4: Intent searchIntent = new Intent(MainActivity.this, SearchForm.class);
                     startActivity(searchIntent);
+                    break;
+                case 5:
+                    Intent profileIntent = new Intent(MainActivity.this, UserProfile.class);
+                    startActivity(profileIntent);
+                    break;
+                case 6:
+                    Intent postIntent = new Intent(MainActivity.this, QueryForm.class);
+                    startActivity(postIntent);
                     break;
             }
         }

@@ -63,19 +63,27 @@ public class SignupActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             switch(position){
-                case 0: Intent mainIntent = new Intent(SignupActivity.this, MainActivity.class);
-                    startActivity(mainIntent);
+                case 0:
                     break;
-                case 1: Toast.makeText(SignupActivity.this, "You are already on the signiup page", Toast.LENGTH_LONG);
+                case 1: Intent signupIntent = new Intent(SignupActivity.this, SignupActivity.class);
+                    startActivity(signupIntent);
                     break;
                 case 2: Intent bookListIntent = new Intent(SignupActivity.this, BookList.class);
                     startActivity(bookListIntent);
                     break;
-                case 3: Intent userPofileIntent = new Intent(SignupActivity.this, UserProfile.class);
+                case 3: Intent userPofileIntent = new Intent(SignupActivity.this, BookList.class);
                     startActivity(userPofileIntent);
                     break;
                 case 4: Intent searchIntent = new Intent(SignupActivity.this, SearchForm.class);
                     startActivity(searchIntent);
+                    break;
+                case 5:
+                    Intent profileIntent = new Intent(SignupActivity.this, UserProfile.class);
+                    startActivity(profileIntent);
+                    break;
+                case 6:
+                    Intent postIntent = new Intent(SignupActivity.this, QueryForm.class);
+                    startActivity(postIntent);
                     break;
             }
         }

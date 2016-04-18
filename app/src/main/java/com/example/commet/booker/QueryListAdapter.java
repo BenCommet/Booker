@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
@@ -16,8 +18,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -35,12 +39,22 @@ import java.util.List;
 public class QueryListAdapter extends ListActivity {
 
     private ArrayList<Book> books;
+    private ListView drawerList;
+    private String [] navDrawerArray;
+    private TypedArray img;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_query_list_adapter);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Resources res = getResources();
+
+        navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
+        drawerList = (ListView) findViewById(R.id.left_drawer);
+        img = res.obtainTypedArray(R.array.nav_images);
+        drawerList.setAdapter(new NavDrawerAdapter(QueryListAdapter.this, navDrawerArray, img));
+        drawerList.setOnItemClickListener(new DrawerItemClickListener());
 //        setSupportActionBar(toolbar);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         final TextView title = (TextView) findViewById(R.id.listTitle);
@@ -90,5 +104,35 @@ public class QueryListAdapter extends ListActivity {
 
         });
 
+    }
+
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            switch(position){
+                case 0:
+                    break;
+                case 1: Intent signupIntent = new Intent(QueryListAdapter.this, SignupActivity.class);
+                    startActivity(signupIntent);
+                    break;
+                case 2: Intent bookListIntent = new Intent(QueryListAdapter.this, BookList.class);
+                    startActivity(bookListIntent);
+                    break;
+                case 3: Intent userPofileIntent = new Intent(QueryListAdapter.this, BookList.class);
+                    startActivity(userPofileIntent);
+                    break;
+                case 4: Intent searchIntent = new Intent(QueryListAdapter.this, SearchForm.class);
+                    startActivity(searchIntent);
+                    break;
+                case 5:
+                    Intent profileIntent = new Intent(QueryListAdapter.this, UserProfile.class);
+                    startActivity(profileIntent);
+                    break;
+                case 6:
+                    Intent postIntent = new Intent(QueryListAdapter.this, QueryForm.class);
+                    startActivity(postIntent);
+                    break;
+            }
+        }
     }
 }

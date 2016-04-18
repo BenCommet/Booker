@@ -48,6 +48,7 @@
             android:id="@+id/signup_button"
             android:layout_below="@+id/password"
             android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
     <ListView
         android:id="@+id/left_drawer"

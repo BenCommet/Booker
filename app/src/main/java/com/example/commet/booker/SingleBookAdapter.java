@@ -10,12 +10,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class SingleBookAdapter extends AppCompatActivity {
+
+    private ListView drawerList;
+    private String [] navDrawerArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,5 +58,35 @@ public class SingleBookAdapter extends AppCompatActivity {
         bookPub.setText("Published By: " + b.publisher);
         bookPubDate.setText("Publishing Date: " + b.dataPub);
         image.setImageDrawable(b.largeImg);
+    }
+
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            switch(position){
+                case 0:
+                    break;
+                case 1: Intent signupIntent = new Intent(SingleBookAdapter.this, SignupActivity.class);
+                    startActivity(signupIntent);
+                    break;
+                case 2: Intent bookListIntent = new Intent(SingleBookAdapter.this, BookList.class);
+                    startActivity(bookListIntent);
+                    break;
+                case 3: Intent userPofileIntent = new Intent(SingleBookAdapter.this, BookList.class);
+                    startActivity(userPofileIntent);
+                    break;
+                case 4: Intent searchIntent = new Intent(SingleBookAdapter.this, SearchForm.class);
+                    startActivity(searchIntent);
+                    break;
+                case 5:
+                    Intent profileIntent = new Intent(SingleBookAdapter.this, UserProfile.class);
+                    startActivity(profileIntent);
+                    break;
+                case 6:
+                    Intent postIntent = new Intent(SingleBookAdapter.this, QueryForm.class);
+                    startActivity(postIntent);
+                    break;
+            }
+        }
     }
 }

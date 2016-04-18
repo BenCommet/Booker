@@ -375,7 +375,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             switch(position){
-                case 0: Toast.makeText(LoginActivity.this, "You are already on the home page.", Toast.LENGTH_LONG);
+                case 0:
                     break;
                 case 1: Intent signupIntent = new Intent(LoginActivity.this, SignupActivity.class);
                     startActivity(signupIntent);
@@ -383,11 +383,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 case 2: Intent bookListIntent = new Intent(LoginActivity.this, BookList.class);
                     startActivity(bookListIntent);
                     break;
-                case 3: Intent userPofileIntent = new Intent(LoginActivity.this, UserProfile.class);
+                case 3: Intent userPofileIntent = new Intent(LoginActivity.this, BookList.class);
                     startActivity(userPofileIntent);
                     break;
                 case 4: Intent searchIntent = new Intent(LoginActivity.this, SearchForm.class);
                     startActivity(searchIntent);
+                    break;
+                case 5:
+                    Intent profileIntent = new Intent(LoginActivity.this, UserProfile.class);
+                    startActivity(profileIntent);
+                    break;
+                case 6:
+                    Intent postIntent = new Intent(LoginActivity.this, QueryForm.class);
+                    startActivity(postIntent);
                     break;
             }
         }

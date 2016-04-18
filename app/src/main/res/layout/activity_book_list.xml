@@ -20,7 +20,9 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:backgroundTintMode="add" />
+            android:backgroundTintMode="add"
+            android:smoothScrollbar="false"
+            android:scrollingCache="true"/>
     </RelativeLayout>
     <ListView
         android:id="@+id/left_drawer"
