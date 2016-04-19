@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,7 +55,6 @@ public class SearchForm extends AppCompatActivity {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-
         Intent searchIntent = new Intent(SearchForm.this, SingleBookAdapter.class);
         searchIntent.putExtra("data", isbnData);
         startActivity(searchIntent);
@@ -63,4 +64,23 @@ public class SearchForm extends AppCompatActivity {
     private void scan () {
         new IntentIntegrator(this).initiateScan(); // `this` is the current Activity
     }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+
+        if (scanningResult != null) {
+            String isbnData = scanningResult.getContents();
+//            Log.e("Error", isbnData);
+            Intent searchIntent = new Intent(SearchForm.this, SingleBookAdapter.class);
+            searchIntent.putExtra("data", isbnData);
+            startActivity(searchIntent);
+        }else{
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "No scan data received!", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
+
+
+
 }
