@@ -17,6 +17,7 @@ import java.io.InputStream;
  * Created by Jesse on 4/20/2016.
  */
 public class MySQLController {
+
     GetAsyncTask req = new GetAsyncTask();
 
     public JSONArray getByISBN (String isbn) {
@@ -52,10 +53,10 @@ public class MySQLController {
         return temp;
     }
 
-    public String[] getAllUserArray() throws JSONException {
+    public String[] getAllUserArray(String email) throws JSONException {
         String[] temp = new String[10];
 
-        JSONArray books = getByEmail("testAccount@mail.gvsu.edu");
+        JSONArray books = getByEmail(email);
 
         for (int i = 0; i < books.length(); i++) {
             temp[i] = books.getJSONObject(i).getString("isbn");

@@ -2,8 +2,6 @@ package com.example.commet.booker;
 
 import android.content.Intent;
 
-import com.parse.Parse;
-import com.parse.ParseObject;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -97,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void login(View view, String user, String pass){
         if (checkUsername(user) && checkPassword(pass)) {
+            UserData app = (UserData) getApplicationContext();
+            app.setEmail(user);
+            app.setPassword(pass);
             Intent intent = new Intent(this, UserProfile.class);
             startActivity(intent);
         }

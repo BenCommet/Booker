@@ -11,18 +11,12 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".ParseInitialize"
+        android:name=".UserData"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.parse.APPLICATION_ID"
-            android:value="yjTOPXcNIDTsswA3RQ4P8CAm797ykDhI30T57h7E" />
-        <meta-data
-            android:name="com.parse.CLIENT_KEY"
-            android:value="NpGnKkyFxdnd6ZHmLW9pBG16YtwOE7LtzskxCkg0" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -78,10 +72,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.commet.booker.UserProfile" />
         </activity>
-        <activity
-            android:name=".QueryListAdapter"
-            android:label="@string/title_activity_list_adapter"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SingleBookAdapter"
             android:label="@string/title_activity_single_book_adapter"

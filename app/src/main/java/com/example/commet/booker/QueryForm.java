@@ -51,7 +51,7 @@ public class QueryForm extends AppCompatActivity implements Serializable{
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         final EditText isbn = (EditText) findViewById(R.id.queryIsbn);
-        final EditText email = (EditText) findViewById(R.id.emailText);
+//        final EditText email = (EditText) findViewById(R.id.emailText);
         final Button searchBtn = (Button) findViewById(R.id.querySearchBtn);
         final Button scanBtn = (Button) findViewById(R.id.scanBtn);
 
@@ -61,8 +61,9 @@ public class QueryForm extends AppCompatActivity implements Serializable{
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                UserData app = (UserData) getApplicationContext();
                 String isbnData = isbn.getText().toString();
-                String emailData = email.getText().toString();
+                String emailData = app.getEmail();
                 post(isbnData, emailData);
             }
         });

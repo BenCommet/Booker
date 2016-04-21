@@ -12,12 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.parse.FindCallback;
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 
 import org.json.JSONException;
 
@@ -50,10 +44,12 @@ public class BookList extends AppCompatActivity {
         Resources res = getResources();
         //instantiating drawer items
 
+        UserData app = (UserData) getApplicationContext();
+
 //        localBooks = res.getStringArray(R.array.local_isbn_array);
         try {
             if(typeOfCall.equals("user")) {
-                localBooks = ctrl.getAllUserArray();
+                localBooks = ctrl.getAllUserArray(app.getEmail());
             }
             if (typeOfCall .equals("all")) {
                 localBooks = ctrl.getAllArray();

@@ -14,8 +14,8 @@ import static org.junit.Assert.*;
  */
 public class MainUnitTest {
     private BookList list;
-    private BookListAdapter adapt;
-    private BookData data;
+//    private BookListAdapter adapt;
+//    private BookData data;
     MainActivity act;
 
     /**
@@ -25,7 +25,7 @@ public class MainUnitTest {
     public void setup() {
         act = new MainActivity();
         list = new BookList();
-        list.updateData();
+//        list.updateData();
     }
 
     /**

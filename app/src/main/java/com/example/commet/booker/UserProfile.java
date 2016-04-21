@@ -24,12 +24,14 @@ public class UserProfile extends AppCompatActivity {
     private ListView drawerList;
     private String [] navDrawerArray;
     private TypedArray img;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         Resources res = getResources();
+        UserData app = (UserData) getApplicationContext();
 
         navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
         drawerList = (ListView) findViewById(R.id.left_drawer);
@@ -45,7 +47,7 @@ public class UserProfile extends AppCompatActivity {
         final Button signOut = (Button) findViewById(R.id.signOut);
 
 //      Need to pull in local name once authentication is implemented
-        name.setText("Jesse");
+        name.setText(app.getEmail());
 
         setSupportActionBar(toolbar);
 
@@ -147,13 +149,16 @@ public class UserProfile extends AppCompatActivity {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-
         Intent intent = new Intent(UserProfile.this, BookList.class);
         intent.putExtra("data", "all");
         startActivity(intent);
     }
     private void userLogout() {
-
+        Intent intent = new Intent(UserProfile.this, MainActivity.class);
+        UserData app = (UserData) getApplicationContext();
+        app.setEmail("");
+        app.setPassword("");
+        startActivity(intent);
     }
 
 }
