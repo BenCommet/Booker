@@ -1,9 +1,13 @@
 package com.example.commet.booker;
 
 import android.accounts.NetworkErrorException;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.StrictMode;
 import android.util.Log;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.DataOutputStream;
@@ -15,26 +19,28 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static android.os.Build.*;
+import static android.os.Build.VERSION.*;
+
 /**
  * Created by Jesse on 4/20/2016.
  */
 public class MySQLController {
+    getTask req = new getTask();
 
-    JSONObject data = null;
-
-    public JSONObject getByISBN (String isbn) {
+    public JSONArray getByISBN (String isbn) {
         String url = "http://www.cis.gvsu.edu/~roeje/Booker/getByIsbn.php?isbn=" + isbn;
-        return requestCtrlGet(url);
+        return req.doInBackground(url);
     }
 
-    public JSONObject getByEmail (String email) {
+    public JSONArray getByEmail (String email) {
         String url = "http://www.cis.gvsu.edu/~roeje/Booker/getByEmail.php?email=" + email;
-        return requestCtrlGet(url);
+        return req.doInBackground(url);
     }
 
-    public JSONObject getAll () {
+    public JSONArray getAll () {
         String url = "http://www.cis.gvsu.edu/~roeje/Booker/getAll.php";
-        return requestCtrlGet(url);
+        return req.doInBackground(url);
     }
 
     public void postData (String email, String isbn) {
@@ -42,50 +48,17 @@ public class MySQLController {
         requestCtrlPost(url, email, isbn);
     }
 
-    public String[] getAllArray() {
+    public String[] getAllArray() throws JSONException {
         String[] temp = new String[100];
 
-        JSONObject books = getAll();
+        JSONArray books = getAll();
 
-        Log.d("Books", books.toString());
+        for (int i = 0; i < books.length(); i++) {
+           temp[i] = books.getJSONObject(i).getString("isbn");
+        }
+        Log.d("Books", temp.toString());
 
         return temp;
-    }
-
-    private JSONObject requestCtrlGet(String searchUrl) {
-        URL url;
-        HttpURLConnection urlConnection = null;
-//        String searchUrl = queryUrl;
-
-        try {
-            url = new URL(searchUrl);
-            urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod("GET");
-            urlConnection.setReadTimeout(5000);
-            urlConnection.setConnectTimeout(5000);
-
-            int responseCode =  urlConnection.getResponseCode();
-            String responseMessage = urlConnection.getResponseMessage();
-
-            if(responseCode == HttpURLConnection.HTTP_OK) {
-                String responseStr = readStream(urlConnection.getInputStream());
-                data = new JSONObject(responseStr);
-                return data;
-            }
-            else {
-                throw new NetworkErrorException();
-            }
-        }
-        catch ( Exception e) {
-            Log.e("Error", "Error incorrect HTTP request", e);
-            e.printStackTrace();
-
-        }finally {
-            if(urlConnection != null)
-                urlConnection.disconnect();
-        }
-        return data;
-
     }
 
     private void requestCtrlPost(String searchUrl, String email, String isbn) {

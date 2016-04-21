@@ -19,6 +19,8 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -43,10 +45,15 @@ public class BookList extends AppCompatActivity {
 
         Resources res = getResources();
         //instantiating drawer items
-        navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
-        localBooks = res.getStringArray(R.array.local_isbn_array);
-//        localBooks = ctrl.getAllArray();
+
+//        localBooks = res.getStringArray(R.array.local_isbn_array);
+        try {
+            localBooks = ctrl.getAllArray();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 //        Log.d("Local Books", localBooks[0]);
+        navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
         img = res.obtainTypedArray(R.array.nav_images);
         drawerList = (ListView) findViewById(R.id.left_drawer);
         drawerList.setAdapter(new NavDrawerAdapter(BookList.this, navDrawerArray, img));
