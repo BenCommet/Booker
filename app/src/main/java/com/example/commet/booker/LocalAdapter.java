@@ -2,6 +2,7 @@ package com.example.commet.booker;
 
         import android.content.Context;
         import android.os.StrictMode;
+        import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -20,6 +21,8 @@ public class LocalAdapter extends ArrayAdapter<String> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
+
+        Book currentBook;
         LayoutInflater bookInflater = LayoutInflater.from(getContext());
         View customView = bookInflater.inflate(R.layout.book_list_item, parent, false);
 
@@ -33,9 +36,17 @@ public class LocalAdapter extends ArrayAdapter<String> {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-        Book currentBook = new Book(currentISBN);
         TextView titleText = (TextView) customView.findViewById(R.id.book_description);
-        titleText.setText(currentBook.title);
+
+        if (currentISBN == null) {
+            titleText.setText(" ... ");
+        }
+        else {
+//            Log.d("ISBN FOR ADAPTER", currentISBN);
+            currentBook = new Book(currentISBN);
+            titleText.setText(currentBook.title);
+        }
+
         return customView;
     }
 }

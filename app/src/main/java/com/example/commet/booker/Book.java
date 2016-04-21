@@ -2,6 +2,7 @@ package com.example.commet.booker;
 
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,8 +35,14 @@ public class Book implements Serializable{
     Drawable largeImg = null;
 
     public Book(String isbn) {
+        Log.d("Creating Book", "Book: ");
         this.isbn = isbn;
-        j = g.doInBackground(isbn);
+        if (isbn == "") {
+            j = new JSONObject();
+        }
+        else {
+            j = g.doInBackground(isbn);
+        }
         try {
             this.title = j.getJSONArray("items").getJSONObject(0).getJSONObject("volumeInfo").getString("title");
             this.author = j.getJSONArray("items").getJSONObject(0).getJSONObject("volumeInfo").getJSONArray("authors").toString();

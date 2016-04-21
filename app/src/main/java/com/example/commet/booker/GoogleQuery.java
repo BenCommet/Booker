@@ -36,8 +36,8 @@ public class GoogleQuery extends AsyncTask<String, Void, JSONObject> implements 
         URL url;
         HttpURLConnection urlConnection = null;
         String searchUrl = "https://www.googleapis.com/books/v1/volumes?"+
-                "q=isbn:" + bookURLs[0];
-
+                "q=isbn:" + bookURLs[0] + "&key=AIzaSyAvugTGEcCdKhLAeWnpUgAMcOoV5HuuwUU";
+        Log.d("Generating Request", "Req");
 //                + "&key=AIzaSyAvugTGEcCdKhLAeWnpUgAMcOoV5HuuwUU";
 
 //        String searchUrl = "https://www.googleapis.com/books/v1/volumes?q=isbn:9781118102282&key=AIzaSyAvugTGEcCdKhLAeWnpUgAMcOoV5HuuwUU";
