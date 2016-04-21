@@ -22,6 +22,8 @@ public class SingleBookAdapter extends AppCompatActivity {
     private ListView drawerList;
     private String [] navDrawerArray;
 
+    private MySQLController ctrl = new MySQLController();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,7 @@ public class SingleBookAdapter extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Bundle bundle = getIntent().getExtras();
-        String strISBN = bundle.getString("data");
+        final String strISBN = bundle.getString("data");
 
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -49,7 +51,7 @@ public class SingleBookAdapter extends AppCompatActivity {
         final TextView bookAuthor = (TextView) findViewById(R.id.bookAuthor);
         final TextView bookPubDate = (TextView) findViewById(R.id.bookPubDate);
         final TextView bookPub = (TextView) findViewById(R.id.bookPub);
-        final Button bookSearch = (Button) findViewById(R.id.bookSubmit);
+        final Button submit = (Button) findViewById(R.id.bookSubmit);
 
         title.setText(b.title);
         isbn.setText("ISBN: " + b.isbn + "\n");
@@ -58,6 +60,15 @@ public class SingleBookAdapter extends AppCompatActivity {
         bookPub.setText("Published By: " + b.publisher);
         bookPubDate.setText("Publishing Date: " + b.dataPub);
         image.setImageDrawable(b.largeImg);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ctrl.postData("testAccount@mail.gvsu.edu", strISBN);
+                Intent profileIntent = new Intent(SingleBookAdapter.this, UserProfile.class);
+                startActivity(profileIntent);
+            }
+        });
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {

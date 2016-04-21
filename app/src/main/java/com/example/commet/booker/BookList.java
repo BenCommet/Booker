@@ -31,6 +31,7 @@ public class BookList extends AppCompatActivity {
     private String [] navDrawerArray;
     private String [] localBooks;
     private TypedArray img;
+    private MySQLController ctrl = new MySQLController();
 
 
     //This method, like its counterpart in main, creates
@@ -44,6 +45,8 @@ public class BookList extends AppCompatActivity {
         //instantiating drawer items
         navDrawerArray = res.getStringArray(R.array.nav_drawer_array);
         localBooks = res.getStringArray(R.array.local_isbn_array);
+//        localBooks = ctrl.getAllArray();
+//        Log.d("Local Books", localBooks[0]);
         img = res.obtainTypedArray(R.array.nav_images);
         drawerList = (ListView) findViewById(R.id.left_drawer);
         drawerList.setAdapter(new NavDrawerAdapter(BookList.this, navDrawerArray, img));

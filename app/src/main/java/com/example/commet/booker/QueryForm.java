@@ -17,6 +17,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,6 +52,7 @@ public class QueryForm extends AppCompatActivity implements Serializable{
 
         final EditText isbn = (EditText) findViewById(R.id.queryIsbn);
         final Button searchBtn = (Button) findViewById(R.id.querySearchBtn);
+        final Button scanBtn = (Button) findViewById(R.id.scanBtn);
 
         isbn.setText("9781118102282");
 //        isbn.setText("9781118983843");
@@ -56,12 +61,40 @@ public class QueryForm extends AppCompatActivity implements Serializable{
             @Override
             public void onClick(View v) {
                 String isbnData = isbn.getText().toString();
-                search(isbnData);
-
+                post(isbnData);
             }
         });
+
+        scanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scan();
+            }
+        });
+
     }
-    private void search(String isbnData) {
+
+    private void scan () {
+        new IntentIntegrator(this).initiateScan(); // `this` is the current Activity
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+
+        if (scanningResult != null) {
+            String isbnData = scanningResult.getContents();
+//            Log.e("Error", isbnData);
+            Intent searchIntent = new Intent(QueryForm.this, SingleBookAdapter.class);
+            searchIntent.putExtra("data", isbnData);
+            startActivity(searchIntent);
+        }else{
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "No scan data received!", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
+
+    private void post(String isbnData) {
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);

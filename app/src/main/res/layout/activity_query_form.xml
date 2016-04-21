@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Enter ISBN to Search For"
+                android:text="Enter ISBN of Book to Post"
                 android:id="@+id/queryTitle"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
@@ -64,7 +64,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start Search"
+                android:text="Verify"
                 android:id="@+id/querySearchBtn"
                 android:layout_below="@+id/queryIsbn"
                 android:layout_alignParentLeft="true"
@@ -72,64 +72,16 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Or, Fill In Book Information"
-                android:id="@+id/queryTitle2"
-                android:layout_marginTop="23dp"
-                android:layout_below="@+id/querySearchBtn"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/queryAuthor"
-                android:layout_marginTop="20dp"
-                android:layout_below="@+id/queryTitle2"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:hint="Author" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText"
-                android:layout_below="@+id/queryAuthor"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:hint="Title" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/queryDate"
-                android:layout_below="@+id/editText"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:hint="Date Published" />
-
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Submit Book"
-                android:id="@+id/querySubmit"
-                android:layout_alignParentBottom="true"
+                android:text="Scan ISBN Barcode"
+                android:id="@+id/scanBtn"
+                android:layout_below="@+id/querySearchBtn"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginBottom="26dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignRight="@+id/querySearchBtn"
+                android:layout_alignEnd="@+id/querySearchBtn" />
 
         </RelativeLayout>
 
