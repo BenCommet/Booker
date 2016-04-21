@@ -67,11 +67,11 @@
                 android:text="Verify"
                 android:id="@+id/querySearchBtn"
                 android:layout_marginTop="17dp"
-                android:layout_below="@+id/emailText"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_alignRight="@+id/emailText"
-                android:layout_alignEnd="@+id/emailText" />
+                android:layout_below="@+id/queryIsbn"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -84,20 +84,6 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignRight="@+id/querySearchBtn"
                 android:layout_alignEnd="@+id/querySearchBtn" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:ems="10"
-                android:id="@+id/emailText"
-                android:layout_below="@+id/queryIsbn"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="20dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:hint="Email" />
 
         </RelativeLayout>
 
