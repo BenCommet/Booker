@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -97,9 +98,11 @@ public class UserProfile extends AppCompatActivity {
                     startActivity(signupIntent);
                     break;
                 case 2: Intent bookListIntent = new Intent(UserProfile.this, BookList.class);
+                    bookListIntent.putExtra("data", "user");
                     startActivity(bookListIntent);
                     break;
                 case 3: Intent userPofileIntent = new Intent(UserProfile.this, BookList.class);
+                    userPofileIntent.putExtra("data", "user");
                     startActivity(userPofileIntent);
                     break;
                 case 4: Intent searchIntent = new Intent(UserProfile.this, SearchForm.class);
@@ -129,12 +132,24 @@ public class UserProfile extends AppCompatActivity {
     }
 
     private void userBooks() {
-        Intent intent = new Intent(UserProfile.this, QueryListAdapter.class);
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
+        Intent intent = new Intent(UserProfile.this, BookList.class);
+        intent.putExtra("data", "user");
         startActivity(intent);
     }
 
     private void displayAll() {
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
         Intent intent = new Intent(UserProfile.this, BookList.class);
+        intent.putExtra("data", "all");
         startActivity(intent);
     }
     private void userLogout() {

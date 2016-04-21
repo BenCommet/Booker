@@ -51,6 +51,7 @@ public class QueryForm extends AppCompatActivity implements Serializable{
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         final EditText isbn = (EditText) findViewById(R.id.queryIsbn);
+        final EditText email = (EditText) findViewById(R.id.emailText);
         final Button searchBtn = (Button) findViewById(R.id.querySearchBtn);
         final Button scanBtn = (Button) findViewById(R.id.scanBtn);
 
@@ -61,7 +62,8 @@ public class QueryForm extends AppCompatActivity implements Serializable{
             @Override
             public void onClick(View v) {
                 String isbnData = isbn.getText().toString();
-                post(isbnData);
+                String emailData = email.getText().toString();
+                post(isbnData, emailData);
             }
         });
 
@@ -94,7 +96,7 @@ public class QueryForm extends AppCompatActivity implements Serializable{
         }
     }
 
-    private void post(String isbnData) {
+    private void post(String isbnData, String email) {
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -102,6 +104,7 @@ public class QueryForm extends AppCompatActivity implements Serializable{
 //        Book data = new Book(isbnData);
         Intent searchIntent = new Intent(QueryForm.this, SingleBookAdapter.class);
         searchIntent.putExtra("data", isbnData);
+        searchIntent.putExtra("email", email);
         startActivity(searchIntent);
     }
 

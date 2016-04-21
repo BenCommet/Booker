@@ -18,7 +18,7 @@ import java.net.URL;
 /**
  * Created by Jesse on 4/20/2016.
  */
-public class getTask extends AsyncTask<String, Void, JSONArray>{
+public class GetAsyncTask extends AsyncTask<String, Void, JSONArray>{
 
     @Override
     protected JSONArray doInBackground (String... searchUrl) {

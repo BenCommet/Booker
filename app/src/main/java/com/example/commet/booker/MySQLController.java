@@ -1,17 +1,11 @@
 package com.example.commet.booker;
 
-import android.accounts.NetworkErrorException;
-import android.os.AsyncTask;
-import android.os.Build;
-import android.os.StrictMode;
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.DataOutputStream;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.InputStreamReader;
@@ -19,14 +13,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static android.os.Build.*;
-import static android.os.Build.VERSION.*;
-
 /**
  * Created by Jesse on 4/20/2016.
  */
 public class MySQLController {
-    getTask req = new getTask();
+    GetAsyncTask req = new GetAsyncTask();
 
     public JSONArray getByISBN (String isbn) {
         String url = "http://www.cis.gvsu.edu/~roeje/Booker/getByIsbn.php?isbn=" + isbn;
@@ -49,12 +40,25 @@ public class MySQLController {
     }
 
     public String[] getAllArray() throws JSONException {
-        String[] temp = new String[100];
+        String[] temp = new String[10];
 
         JSONArray books = getAll();
 
         for (int i = 0; i < books.length(); i++) {
            temp[i] = books.getJSONObject(i).getString("isbn");
+        }
+        Log.d("Books", temp.toString());
+
+        return temp;
+    }
+
+    public String[] getAllUserArray() throws JSONException {
+        String[] temp = new String[10];
+
+        JSONArray books = getByEmail("testAccount@mail.gvsu.edu");
+
+        for (int i = 0; i < books.length(); i++) {
+            temp[i] = books.getJSONObject(i).getString("isbn");
         }
         Log.d("Books", temp.toString());
 

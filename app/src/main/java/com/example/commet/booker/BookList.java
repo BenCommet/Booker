@@ -42,13 +42,23 @@ public class BookList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
 
+        Bundle bundle = getIntent().getExtras();
+        String typeOfCall = bundle.getString("data");
+
+        Log.d("Type of Call", typeOfCall);
 
         Resources res = getResources();
         //instantiating drawer items
 
 //        localBooks = res.getStringArray(R.array.local_isbn_array);
         try {
-            localBooks = ctrl.getAllArray();
+            if(typeOfCall.equals("user")) {
+                localBooks = ctrl.getAllUserArray();
+            }
+            if (typeOfCall .equals("all")) {
+                localBooks = ctrl.getAllArray();
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

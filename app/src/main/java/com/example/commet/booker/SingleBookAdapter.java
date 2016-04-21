@@ -34,6 +34,7 @@ public class SingleBookAdapter extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         final String strISBN = bundle.getString("data");
+        final String strEmail = bundle.getString("email");
 
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -64,7 +65,7 @@ public class SingleBookAdapter extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ctrl.postData("testAccount@mail.gvsu.edu", strISBN);
+                ctrl.postData(strEmail, strISBN);
                 Intent profileIntent = new Intent(SingleBookAdapter.this, UserProfile.class);
                 startActivity(profileIntent);
             }
