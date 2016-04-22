@@ -12,6 +12,8 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Jesse on 4/20/2016.
@@ -40,29 +42,29 @@ public class MySQLController {
         requestCtrlPost(url, email, isbn);
     }
 
-    public String[] getAllArray() throws JSONException {
-        String[] temp = new String[10];
+    public List<String> getAllArray() throws JSONException {
+//        String[] temp = new String[10];
+        List<String> temp = new ArrayList<String>();
 
         JSONArray books = getAll();
 
         for (int i = 0; i < books.length(); i++) {
-           temp[i] = books.getJSONObject(i).getString("isbn");
+           temp.add(books.getJSONObject(i).getString("isbn"));
         }
-        Log.d("Books", temp.toString());
+//        Log.d("Books", temp.toString());
 
         return temp;
     }
 
-    public String[] getAllUserArray(String email) throws JSONException {
-        String[] temp = new String[10];
-
+    public List<String> getAllUserArray(String email) throws JSONException {
+//        String[] temp = new String[10];
+        List<String> temp = new ArrayList<String>();
         JSONArray books = getByEmail(email);
 
         for (int i = 0; i < books.length(); i++) {
-            temp[i] = books.getJSONObject(i).getString("isbn");
+            temp.add(books.getJSONObject(i).getString("isbn"));
         }
-        Log.d("Books", temp.toString());
-
+//        Log.d("Books", temp.toString());
         return temp;
     }
 

@@ -11,11 +11,13 @@ package com.example.commet.booker;
 
         import org.json.JSONException;
 
+        import java.util.List;
+
 /**
  * Created by Commet on 3/23/2016.
  */
 public class LocalAdapter extends ArrayAdapter<String> {
-    LocalAdapter(Context context, String[] books){
+    LocalAdapter(Context context, List<String> books){
         super(context, R.layout.book_list_item, books);
     }
 

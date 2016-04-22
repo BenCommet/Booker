@@ -25,7 +25,7 @@ public class BookList extends AppCompatActivity {
     private ListView listView;
     private ListView drawerList;
     private String [] navDrawerArray;
-    private String [] localBooks;
+    private List<String> localBooks;
     private TypedArray img;
     private MySQLController ctrl = new MySQLController();
 
