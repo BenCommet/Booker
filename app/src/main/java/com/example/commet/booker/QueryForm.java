@@ -55,7 +55,7 @@ public class QueryForm extends AppCompatActivity implements Serializable{
         final Button searchBtn = (Button) findViewById(R.id.querySearchBtn);
         final Button scanBtn = (Button) findViewById(R.id.scanBtn);
 
-        isbn.setText("9781118102282");
+        isbn.setText("9780073229720");
 //        isbn.setText("9781118983843");
 
         searchBtn.setOnClickListener(new View.OnClickListener() {

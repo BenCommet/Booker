@@ -15,7 +15,7 @@ public class NavDrawerAdapter extends ArrayAdapter<String>{
     private final String[] itemname;
     private final TypedArray imgid;
 
-        public NavDrawerAdapter(Activity context, String[] itemname, TypedArray images) {
+    public NavDrawerAdapter(Activity context, String[] itemname, TypedArray images) {
         super(context, R.layout.nav_drawer_row, itemname);
         // TODO Auto-generated constructor stub
 
