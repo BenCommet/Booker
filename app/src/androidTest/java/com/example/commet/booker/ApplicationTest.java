@@ -127,4 +127,29 @@ public class ApplicationTest {
         intended(hasComponent(new ComponentName(getTargetContext(), SingleBookAdapter.class)));
     }
 
+    /* This test checks to see if the ISBN value is successfully passed
+*/
+    @Test
+    public void testSearchISBNFunction(){
+        onView(withId(R.id.username)).perform(clearText(), typeText("android@google.com"));
+        onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
+        onView(withText("Barter Books")).perform(closeSoftKeyboard());
+        onView(withText("Login")).perform(click());
+        onView(withId(R.id.userSearch)).perform(click());
+        onView(withId(R.id.startSearch)).perform(click());
+        onView(withId(R.id.bookIsbn)).check(matches(withText("ISBN: 9781118983843\n")));
+    }
+
+    @Test
+    public void testSearchAuthorFunction(){
+        onView(withId(R.id.username)).perform(clearText(), typeText("android@google.com"));
+        onView(withId(R.id.password)).perform(clearText(), typeText("134567892"));
+        onView(withText("Barter Books")).perform(closeSoftKeyboard());
+        onView(withText("Login")).perform(click());
+        onView(withId(R.id.userSearch)).perform(click());
+        onView(withId(R.id.startSearch)).perform(click());
+        onView(withId(R.id.bookPubDate)).check(matches(withText("Publishing Date: 2015-01-20")));
+    }
+
+
 }
