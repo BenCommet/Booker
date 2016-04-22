@@ -35,7 +35,6 @@ public class Book implements Serializable{
     Drawable largeImg = null;
 
     public Book(String isbn) {
-        Log.d("Creating Book", "Book: ");
         this.isbn = isbn;
         if (isbn == "") {
             j = new JSONObject();
@@ -71,6 +70,5 @@ public class Book implements Serializable{
     public String toString() {
        return title;
     }
-
 
 }

@@ -13,10 +13,11 @@ import static org.junit.Assert.*;
  * method calls.
  */
 public class MainUnitTest {
-    private BookList list;
-//    private BookListAdapter adapt;
-//    private BookData data;
+    BookList list;
     MainActivity act;
+    GoogleQuery gq;
+    MySQLController ctrl;
+    UserData up;
 
     /**
     * Instatiation of objects used in following tests
@@ -25,15 +26,18 @@ public class MainUnitTest {
     public void setup() {
         act = new MainActivity();
         list = new BookList();
-//        list.updateData();
+        gq = new GoogleQuery();
+        ctrl = new MySQLController();
+        up = new UserData();
+        up.setPassword("123466789");
+        up.setEmail("jessedroe@gmail.com");
     }
 
     /**
     * Test to see if BookList is instantiated correctly.
     */
     @Test
-    public void bookListTest() throws Exception
-    {
+    public void bookListTest() throws Exception {
         assertNotNull(list);
     }
 
@@ -60,7 +64,7 @@ public class MainUnitTest {
      */
     @Test
     public void loginErrorCheckTestTrue() throws Exception {
-        String s = "jesse@gmail";
+        String s = "jessedroe@gmail.com";
         assertTrue(act.checkUsername(s));
     }
 
@@ -69,8 +73,62 @@ public class MainUnitTest {
      */
     @Test
     public void loginErrorCheckTestFalse() throws Exception {
-        String s = "jessegmail.com";
+        String s = "jessegmail";
         assertFalse(act.checkUsername(s));
     }
+
+    @Test
+    public void userDataSetEmail() throws Exception {
+        String s = "test@gmail.com";
+        up.setEmail(s);
+        assertTrue(s == up.getEmail());
+    }
+
+    @Test
+    public void userDataSetPass() throws Exception {
+        String s = "123466";
+        up.setPassword(s);
+        assertTrue(s == up.getPassword());
+    }
+
+    @Test
+    public void userDataGetPass() throws Exception {
+        String s = "123466789";
+        assertEquals(s, up.getPassword());
+    }
+
+    @Test
+    public void userDataGetEmail() throws Exception {
+        String s = "jessedroe@gmail.com";
+        assertEquals(s,up.getEmail());
+    }
+    @Test
+    public void userDataSetEmailFalse() throws Exception {
+        String s = "test@gmail.com";
+        String s2 = "test2@gmail";
+        up.setEmail(s);
+        assertFalse(s2 == up.getEmail());
+    }
+
+    @Test
+    public void userDataSetPassFalse() throws Exception {
+        String s = "123466";
+        String s2 = "3216478";
+        up.setPassword(s);
+        assertFalse(s2 == up.getPassword());
+    }
+
+    @Test
+    public void userDataGetPassFalse() throws Exception {
+        String s = "123466";
+        assertNotEquals(s, up.getPassword());
+    }
+
+    @Test
+    public void userDataGetEmailFalse() throws Exception {
+        String s = "jroe@gmail.com";
+        assertNotEquals(s,up.getEmail());
+    }
+
 }
 
